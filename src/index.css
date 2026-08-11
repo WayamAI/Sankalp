@@ -50,15 +50,15 @@
     --priority-p4: 25 35% 55%;
 
     /* Sidebar */
-    --sidebar-background: 18 55% 7%;
-    --sidebar-foreground: 30 25% 78%;
-    --sidebar-primary: 33 100% 58%;
+    --sidebar-background: 30 60% 93%;
+    --sidebar-foreground: 20 35% 25%;
+    --sidebar-primary: 16 90% 38%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 18 45% 14%;
-    --sidebar-accent-foreground: 30 25% 92%;
-    --sidebar-border: 18 40% 16%;
-    --sidebar-ring: 33 100% 58%;
-    --sidebar-muted: 25 25% 38%;
+    --sidebar-accent: 28 70% 85%;
+    --sidebar-accent-foreground: 18 45% 15%;
+    --sidebar-border: 25 40% 82%;
+    --sidebar-ring: 16 90% 38%;
+    --sidebar-muted: 25 25% 42%;
 
     /* Charts */
     --chart-committed: 16 90% 38%;

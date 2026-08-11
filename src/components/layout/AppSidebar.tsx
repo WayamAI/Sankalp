@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import logoImg from '@/assets/brand/logo-dark.svg';
+import logoImg from '@/assets/brand/logo-light.svg';
 import { useNavigate, useLocation } from 'react-router-dom';
 import {
   LayoutDashboard, ClipboardList, FileText, Grid3X3,

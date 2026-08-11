@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Factory, Shield, User } from 'lucide-react';
 import { validateLoginInput } from '@/lib/loginValidation';
-import logoImg from '@/assets/brand/logo-dark.svg';
+import logoImg from '@/assets/brand/logo-light.svg';
 
 const roles = [
   { id: 'planner', label: 'Production Planner', desc: 'Full access to order management, simulation, replanning', icon: <Factory className="w-5 h-5" /> },
