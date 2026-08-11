@@ -6,69 +6,69 @@
 
 @layer base {
   :root {
-    --background: 30 20% 97%;
-    --foreground: 20 15% 12%;
+    --background: 30 55% 95%;
+    --foreground: 18 40% 10%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 20 15% 12%;
+    --card: 30 40% 99%;
+    --card-foreground: 18 40% 10%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 20 15% 12%;
+    --popover: 30 40% 99%;
+    --popover-foreground: 18 40% 10%;
 
-    --primary: 16 88% 38%;
+    --primary: 16 90% 38%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 30 25% 93%;
-    --secondary-foreground: 20 15% 12%;
+    --secondary: 28 55% 88%;
+    --secondary-foreground: 18 40% 10%;
 
-    --muted: 30 20% 94%;
-    --muted-foreground: 25 10% 45%;
+    --muted: 28 40% 91%;
+    --muted-foreground: 22 25% 40%;
 
-    --accent: 30 40% 90%;
-    --accent-foreground: 16 88% 30%;
+    --accent: 28 70% 84%;
+    --accent-foreground: 16 90% 28%;
 
-    --destructive: 10 85% 45%;
+    --destructive: 8 100% 42%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 25 20% 87%;
-    --input: 25 20% 87%;
-    --ring: 16 88% 38%;
+    --border: 25 45% 80%;
+    --input: 25 45% 80%;
+    --ring: 16 90% 38%;
 
     --radius: 0.375rem;
 
     /* Status system — all warm/orange family, differentiated by lightness & saturation */
-    --status-on-track: 45 85% 42%;
-    --status-at-risk: 30 92% 50%;
-    --status-critical: 10 85% 45%;
-    --status-delayed: 8 60% 32%;
-    --status-completed: 25 15% 55%;
+    --status-on-track: 42 95% 40%;
+    --status-at-risk: 28 100% 50%;
+    --status-critical: 8 100% 42%;
+    --status-delayed: 8 90% 27%;
+    --status-completed: 25 35% 55%;
 
     /* Priority */
-    --priority-p1: 10 85% 45%;
-    --priority-p2: 30 92% 50%;
-    --priority-p3: 45 80% 45%;
-    --priority-p4: 25 15% 55%;
+    --priority-p1: 8 100% 42%;
+    --priority-p2: 28 100% 50%;
+    --priority-p3: 42 92% 43%;
+    --priority-p4: 25 35% 55%;
 
     /* Sidebar */
-    --sidebar-background: 20 30% 8%;
-    --sidebar-foreground: 30 15% 75%;
+    --sidebar-background: 18 55% 7%;
+    --sidebar-foreground: 30 25% 78%;
     --sidebar-primary: 33 100% 58%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 20 25% 15%;
-    --sidebar-accent-foreground: 30 15% 90%;
-    --sidebar-border: 20 20% 17%;
+    --sidebar-accent: 18 45% 14%;
+    --sidebar-accent-foreground: 30 25% 92%;
+    --sidebar-border: 18 40% 16%;
     --sidebar-ring: 33 100% 58%;
-    --sidebar-muted: 25 15% 35%;
+    --sidebar-muted: 25 25% 38%;
 
     /* Charts */
-    --chart-committed: 16 88% 38%;
-    --chart-tentative: 30 60% 65%;
-    --chart-available: 30 15% 88%;
-    --chart-threshold: 10 85% 45%;
+    --chart-committed: 16 90% 38%;
+    --chart-tentative: 30 75% 62%;
+    --chart-available: 30 35% 85%;
+    --chart-threshold: 8 100% 42%;
 
     /* Surfaces */
-    --surface-elevated: 0 0% 100%;
-    --surface-sunken: 30 20% 95%;
+    --surface-elevated: 30 40% 99%;
+    --surface-sunken: 30 45% 92%;
   }
 }
 
