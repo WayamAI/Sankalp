@@ -149,7 +149,7 @@ export default function RemediationPanel({
           <Radio className="w-3.5 h-3.5 text-primary" />
           <span className="text-[12px] font-medium text-foreground">Impact assessment — {risk.title}</span>
           <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary font-medium">
-            Running on live J2W data
+            Running on live Wayam AI data
           </span>
         </div>
         <button onClick={onClose} className="p-1 hover:bg-muted rounded">
@@ -185,7 +185,7 @@ export default function RemediationPanel({
       <div className="px-4 pt-4 pb-3">
         <h3 className="text-xs font-medium text-foreground mb-1">Choose a remediation path</h3>
         <p className="text-[11px] text-muted-foreground mb-4">
-          Claude modelled 3 options against live J2W production data. Select one to see the full action plan.
+          Claude modelled 3 options against live Wayam AI production data. Select one to see the full action plan.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">

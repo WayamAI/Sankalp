@@ -231,7 +231,7 @@ export const REMEDIATION_DATA: RiskRemediation[] = [
           { title: 'Raise emergency PO for 45-day buffer stock', detail: 'Same as Option A — immediate procurement from current Tier-2 supplier.', urgency: 'today', dueDate: 'Apr 14' },
           { title: 'Identify and shortlist 2 alternate Tier-2 suppliers', detail: 'Procurement team to identify suppliers producing equivalent component. Target: 2 candidates by Apr 20.', urgency: 'this_week', dueDate: 'Apr 20' },
           { title: 'Issue RFQ to alternate suppliers', detail: 'Send technical specification and qualification requirements. Request sample + test report.', urgency: 'this_week', dueDate: 'Apr 22' },
-          { title: 'Conduct supplier site audit (shortlisted candidate)', detail: 'Quality team site visit to top candidate. Assessment against J2W vendor qualification standard.', urgency: 'this_month', dueDate: 'May 10' },
+          { title: 'Conduct supplier site audit (shortlisted candidate)', detail: 'Quality team site visit to top candidate. Assessment against Wayam AI vendor qualification standard.', urgency: 'this_month', dueDate: 'May 10' },
           { title: 'Place qualification order with second source', detail: '3-lot qualification order. Lab testing at Pune quality lab. Sign-off from engineering head required.', urgency: 'this_month', dueDate: 'May 20' },
           { title: 'Enable CIBIL/MCA21 automated alerts on primary Tier-2', detail: 'Finance to set up company registration number monitoring. Alert threshold: any negative filing.', urgency: 'this_week', dueDate: 'Apr 17' },
         ],
@@ -291,7 +291,7 @@ export const REMEDIATION_DATA: RiskRemediation[] = [
         ],
         actionPlan: [
           { title: 'Audit IEC codes on all active Gulf orders', detail: 'Legal/compliance to verify IEC code currency for PF-2025-0178, PF-2025-0301, PF-2025-0112. Flag any expired codes.', urgency: 'this_week', dueDate: 'Apr 18' },
-          { title: 'Refresh DGFT registration for Joules to Watts', detail: 'Confirm DGFT registration validity. If renewal is due within 6 months, initiate renewal immediately.', urgency: 'this_week', dueDate: 'Apr 19' },
+          { title: 'Refresh DGFT registration for Wayam AI', detail: 'Confirm DGFT registration validity. If renewal is due within 6 months, initiate renewal immediately.', urgency: 'this_week', dueDate: 'Apr 19' },
           { title: 'Prepare SCOMET compliance documentation package', detail: 'Pre-prepare export documentation bundle for each Gulf order so that any clearance post-directive can be processed in 48 hours.', urgency: 'this_month', dueDate: 'Apr 25' },
         ],
         commitMessage: 'IEC audit initiated · DGFT registration refreshed · Compliance docs prepared',
@@ -318,7 +318,7 @@ export const REMEDIATION_DATA: RiskRemediation[] = [
         actionPlan: [
           { title: 'Assign policy monitoring owner and cadence', detail: 'Legal/compliance team member to review MoD gazette, DGFT circulars, and FICCI briefings every Monday morning. Escalation trigger: "immediate effect" language.', urgency: 'today', dueDate: 'Apr 14' },
           { title: 'Map Gulf order specs to domestic customer requirements', detail: 'Technical team to identify which Gulf order specs (PF-2025-0178, PF-2025-0301, PF-2025-0112) overlap with BHEL, NTPC, or PGCIL active tenders.', urgency: 'this_week', dueDate: 'Apr 20' },
-          { title: 'Identify PGCIL and BHEL tenders open for domestic redirect', detail: 'BD team to check PGCIL and BHEL tender portals for transformer procurement that matches J2W pipeline specs.', urgency: 'this_week', dueDate: 'Apr 21' },
+          { title: 'Identify PGCIL and BHEL tenders open for domestic redirect', detail: 'BD team to check PGCIL and BHEL tender portals for transformer procurement that matches Wayam AI pipeline specs.', urgency: 'this_week', dueDate: 'Apr 21' },
           { title: 'Set up DGFT alert subscription', detail: 'Subscribe to DGFT official circular email list and FICCI trade policy briefing list for early warning.', urgency: 'this_week', dueDate: 'Apr 16' },
         ],
         commitMessage: 'Monitoring activated · Domestic substitution mapped · DGFT alerts set up',

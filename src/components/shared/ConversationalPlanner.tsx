@@ -123,7 +123,7 @@ export function ConversationalPlanner() {
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3 border-b bg-primary text-primary-foreground rounded-t-lg">
             <div>
-              <p className="font-semibold text-sm">PlanForge AI Planner</p>
+              <p className="font-semibold text-sm">PlanMaster AI Planner</p>
               <p className="text-[10px] opacity-80">Connected to live order book • 1,183 orders</p>
             </div>
             <button onClick={() => setIsOpen(false)} className="hover:opacity-70">
