@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Factory, Shield, User } from 'lucide-react';
+import { validateLoginInput } from '@/lib/loginValidation';
+import logoImg from '@/assets/brand/logo-light.svg';
 
 const roles = [
   { id: 'planner', label: 'Production Planner', desc: 'Full access to order management, simulation, replanning', icon: <Factory className="w-5 h-5" /> },
@@ -11,12 +13,19 @@ const roles = [
 
 export default function Login() {
   const [selectedRole, setSelectedRole] = useState('planner');
-  const [email, setEmail] = useState('r.krishnamurthy@planforge.io');
+  const [email, setEmail] = useState('r.krishnamurthy@planmaster.ai');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
+    const result = validateLoginInput(email, password);
+    if (!result.valid) {
+      setError(result.error);
+      return;
+    }
+    setError(null);
     navigate('/');
   };
 
@@ -24,7 +33,8 @@ export default function Login() {
     <div className="min-h-screen bg-sidebar flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-sidebar-accent-foreground tracking-tight">PlanForge AI</h1>
+          <img src={logoImg} alt="Wayam AI" className="w-12 h-12 mx-auto mb-3" />
+          <h1 className="text-2xl font-bold text-sidebar-accent-foreground tracking-tight">PlanMaster AI</h1>
           <p className="text-xs text-sidebar-muted tracking-widest uppercase mt-1">Intelligent Order Simulation & Replanning</p>
         </div>
 
@@ -48,6 +58,10 @@ export default function Login() {
               className="w-full px-3 py-2 text-sm border rounded bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary"
             />
           </div>
+
+          {error && (
+            <p className="text-xs text-destructive -mt-2">{error}</p>
+          )}
 
           <div>
             <label className="text-[11px] font-medium text-muted-foreground uppercase tracking-wider block mb-2">Role</label>
