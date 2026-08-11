@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import logoImg from '@/assets/jouletowatts_logo.png';
+import logoImg from '@/assets/brand/logo-dark.svg';
 import { useNavigate, useLocation } from 'react-router-dom';
 import {
   LayoutDashboard, ClipboardList, FileText, Grid3X3,
@@ -171,9 +171,9 @@ export function AppSidebar() {
       <div className="px-4 py-3 border-b border-sidebar-border">
         <div className="flex items-center justify-between">
           <div className="flex flex-col gap-1">
-            <img src={logoImg} alt="Joules to Watts" className="w-36 object-contain object-left" />
-            <h1 className="text-sm font-bold text-sidebar-accent-foreground tracking-tight">PlanForge AI</h1>
-            <p className="text-[9px] text-sidebar-muted tracking-widest uppercase">Intelligent Replanning</p>
+            <img src={logoImg} alt="Wayam AI" className="w-9 h-9 object-contain object-left" />
+            <h1 className="text-sm font-bold text-sidebar-accent-foreground tracking-tight">PlanMaster AI</h1>
+            <p className="text-[9px] text-sidebar-muted tracking-widest uppercase">Wayam AI</p>
           </div>
           <button onClick={() => setCollapsed(true)} className="text-sidebar-muted hover:text-sidebar-foreground self-start mt-1">
             <Menu className="w-4 h-4" />
