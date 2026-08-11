@@ -33,18 +33,18 @@ export default function Login() {
     <div className="min-h-screen bg-sidebar flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <img src={logoImg} alt="Wayam AI" className="w-12 h-12 mx-auto mb-3" />
+          <img src={logoImg} alt="Wayam AI" className="w-20 h-20 mx-auto mb-3" />
           <h1 className="text-2xl font-bold text-sidebar-accent-foreground tracking-tight">PlanMaster AI</h1>
           <p className="text-xs text-sidebar-muted tracking-widest uppercase mt-1">Intelligent Order Simulation & Replanning</p>
         </div>
 
-        <form onSubmit={handleLogin} className="bg-card rounded-lg border p-6 shadow-xl space-y-5">
+        <form onSubmit={handleLogin} noValidate className="bg-card rounded-lg border p-6 shadow-xl space-y-5">
           <div>
             <label className="text-[11px] font-medium text-muted-foreground uppercase tracking-wider block mb-1.5">Email</label>
             <input
               type="email"
               value={email}
-              onChange={e => setEmail(e.target.value)}
+              onChange={e => { setEmail(e.target.value); setError(null); }}
               className="w-full px-3 py-2 text-sm border rounded bg-background text-foreground focus:outline-none focus:ring-1 focus:ring-primary"
             />
           </div>
@@ -53,7 +53,7 @@ export default function Login() {
             <input
               type="password"
               value={password}
-              onChange={e => setPassword(e.target.value)}
+              onChange={e => { setPassword(e.target.value); setError(null); }}
               placeholder="Enter password"
               className="w-full px-3 py-2 text-sm border rounded bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary"
             />

@@ -25,3 +25,5 @@ dist-ssr
 
 # Worktrees used for isolated feature work
 .worktrees/
+.vercel
+.env*
