@@ -5,11 +5,11 @@ import { orders, formatRevenue } from '@/data/mockData';
 import { ScatterChart, Scatter, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 
 const statusColors: Record<string, string> = {
-  'On Track': '#33a854',
-  'At Risk': '#f5a623',
-  'Critical': '#e04040',
-  'Delayed': '#8b2020',
-  'Completed': '#888',
+  'On Track': '#C69910',
+  'At Risk': '#F57F0A',
+  'Critical': '#D43211',
+  'Delayed': '#822E21',
+  'Completed': '#9D897B',
 };
 
 export default function OrderPriorityMatrix() {
