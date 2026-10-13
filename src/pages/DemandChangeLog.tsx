@@ -5,7 +5,7 @@ export default function DemandChangeLog() {
     <AppLayout>
       <div className="p-6 space-y-6">
         <div>
-          <h1 className="text-xl font-bold text-foreground">Demand Change Log</h1>
+          <h1 className="font-display text-display-xl text-foreground">Demand Change Log</h1>
           <p className="text-xs text-muted-foreground mt-0.5">Historical log of all demand modifications</p>
         </div>
         <div className="bg-card border rounded-lg p-4">

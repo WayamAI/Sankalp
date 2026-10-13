@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from 'react-router-dom';
+import { AppIcon } from '@/components/ui/app-icon';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { MetricCard, StatusBadge } from '@/components/shared/StatusBadge';
 import { orders } from '@/data/mockData';
@@ -33,7 +34,7 @@ export default function FactoryView() {
   return (
     <AppLayout>
       <div className="p-5">
-        <h2 className="text-lg font-bold text-foreground mb-4">{factory.name}</h2>
+        <h2 className="font-display text-display-xl text-foreground mb-5">{factory.name}</h2>
 
         <div className="grid grid-cols-5 gap-3 mb-4">
           <MetricCard title="Planned Output" value={`${factory.planned} units`} subtitle="This week" />
@@ -43,7 +44,7 @@ export default function FactoryView() {
           <MetricCard title="Workforce" value={factory.workforce} subtitle="On shift" />
         </div>
 
-        <p className="text-xs text-status-at-risk mb-4">⚠ Top Bottleneck: {factory.bottleneck}</p>
+        <p className="text-xs text-status-at-risk mb-4"><AppIcon name="warning" size="xs" className="inline-block align-[-2px] mr-1 text-feedback-warning-icon" />Top Bottleneck: {factory.bottleneck}</p>
 
         <div className="grid grid-cols-2 gap-4 mb-4">
           {factory.bayStatus.map((bay: any) => (

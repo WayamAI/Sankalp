@@ -34,7 +34,7 @@ export default function DisruptionTracker() {
     <AppLayout>
       <div className="p-6 space-y-6">
         <div>
-          <h1 className="text-xl font-bold text-foreground">Disruption Tracker</h1>
+          <h1 className="font-display text-display-xl text-foreground">Disruption Tracker</h1>
           <p className="text-xs text-muted-foreground mt-0.5">Active supply chain disruptions being managed</p>
         </div>
 
@@ -42,19 +42,19 @@ export default function DisruptionTracker() {
         <div className="grid grid-cols-4 gap-4">
           <div className="bg-card border rounded-lg p-4">
             <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Active Disruptions</p>
-            <p className="text-2xl font-bold text-status-critical mt-1">{disruptions.length}</p>
+            <p className="font-display text-display-metric tabular-nums text-status-critical mt-1">{disruptions.length}</p>
           </div>
           <div className="bg-card border rounded-lg p-4">
             <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Orders Affected</p>
-            <p className="text-2xl font-bold text-foreground mt-1">{disruptions.reduce((s, d) => s + d.ordersAffected, 0)}</p>
+            <p className="font-display text-display-metric tabular-nums text-foreground mt-1">{disruptions.reduce((s, d) => s + d.ordersAffected, 0)}</p>
           </div>
           <div className="bg-card border rounded-lg p-4">
             <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Total Revenue at Risk</p>
-            <p className="text-2xl font-bold text-status-critical mt-1">₹{totalRevenue} Cr</p>
+            <p className="font-display text-display-metric tabular-nums text-status-critical mt-1">₹{totalRevenue} Cr</p>
           </div>
           <div className="bg-card border rounded-lg p-4">
             <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Escalated</p>
-            <p className="text-2xl font-bold text-status-at-risk mt-1">{disruptions.filter(d => d.status === 'Escalated').length}</p>
+            <p className="font-display text-display-metric tabular-nums text-status-at-risk mt-1">{disruptions.filter(d => d.status === 'Escalated').length}</p>
           </div>
         </div>
 

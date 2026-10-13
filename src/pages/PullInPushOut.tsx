@@ -23,7 +23,7 @@ export default function PullInPushOut() {
     <AppLayout>
       <div className="p-6 space-y-6">
         <div>
-          <h1 className="text-xl font-bold text-foreground">Pull-In / Push-Out Impact</h1>
+          <h1 className="font-display text-display-xl text-foreground">Pull-In / Push-Out Impact</h1>
           <p className="text-xs text-muted-foreground mt-0.5">Managing demand volatility across the order book</p>
         </div>
 
@@ -31,21 +31,21 @@ export default function PullInPushOut() {
         <div className="grid grid-cols-5 gap-4">
           <div className="bg-card border rounded-lg p-4">
             <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Changes This Quarter</p>
-            <p className="text-2xl font-bold text-foreground mt-1">34</p>
+            <p className="font-display text-display-metric tabular-nums text-foreground mt-1">34</p>
           </div>
           <div className="bg-card border rounded-lg p-4">
             <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Pull-Ins</p>
-            <p className="text-2xl font-bold text-status-at-risk mt-1">21</p>
+            <p className="font-display text-display-metric tabular-nums text-status-at-risk mt-1">21</p>
             <p className="text-[10px] text-muted-foreground">Avg: -22 days</p>
           </div>
           <div className="bg-card border rounded-lg p-4">
             <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Push-Outs</p>
-            <p className="text-2xl font-bold text-status-on-track mt-1">13</p>
+            <p className="font-display text-display-metric tabular-nums text-status-on-track mt-1">13</p>
             <p className="text-[10px] text-muted-foreground">Avg: +41 days</p>
           </div>
           <div className="bg-card border rounded-lg p-4">
             <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Unresolved</p>
-            <p className="text-2xl font-bold text-status-critical mt-1">8</p>
+            <p className="font-display text-display-metric tabular-nums text-status-critical mt-1">8</p>
           </div>
           <div className="bg-card border rounded-lg p-4">
             <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Net Capacity Impact</p>

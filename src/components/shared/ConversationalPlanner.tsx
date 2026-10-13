@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { MessageSquare, X, Send, ArrowUpRight } from 'lucide-react';
+import { AppIcon } from '@/components/ui/app-icon';
+import { IconButton } from '@/components/ui/icon-button';
 import { useNavigate } from 'react-router-dom';
 
 const suggestedPrompts = [
@@ -107,11 +108,12 @@ export function ConversationalPlanner() {
       {/* Floating button */}
       <button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-lg flex items-center justify-center hover:scale-105 transition-transform ${isOpen ? 'hidden' : ''}`}
+        aria-label="Open Sankalp Planner"
+        className={`fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-action-primary text-icon-on-color flex items-center justify-center hover:bg-action-primary-hover transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${isOpen ? 'hidden' : ''}`}
       >
-        <MessageSquare className="w-6 h-6" />
+        <AppIcon name="chat" size="xl" />
         {alertCount > 0 && (
-          <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-status-critical text-[10px] font-bold flex items-center justify-center text-primary-foreground">
+          <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-status-critical text-[10px] font-semibold tabular-nums flex items-center justify-center text-on-color ring-2 ring-background">
             {alertCount}
           </span>
         )}
@@ -119,16 +121,14 @@ export function ConversationalPlanner() {
 
       {/* Chat panel */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 z-50 w-[420px] h-[560px] bg-card border rounded-lg shadow-2xl flex flex-col">
+        <div className="fixed bottom-6 right-6 z-50 w-[420px] max-w-[calc(100vw-3rem)] h-[560px] max-h-[calc(100vh-3rem)] bg-container border border-default rounded-xl shadow-lg flex flex-col overflow-hidden">
           {/* Header */}
-          <div className="flex items-center justify-between px-4 py-3 border-b bg-primary text-primary-foreground rounded-t-lg">
+          <div className="flex items-center justify-between px-4 py-3 border-b bg-raised text-foreground">
             <div>
-              <p className="font-semibold text-sm">PlanMaster AI Planner</p>
-              <p className="text-[10px] opacity-80">Connected to live order book • 1,183 orders</p>
+              <p className="text-label-md text-foreground">Sankalp Planner</p>
+              <p className="text-caption text-tertiary">Connected to live order book • 1,183 orders</p>
             </div>
-            <button onClick={() => setIsOpen(false)} className="hover:opacity-70">
-              <X className="w-4 h-4" />
-            </button>
+            <IconButton icon="close" label="Close planner" size="sm" onClick={() => setIsOpen(false)} />
           </div>
 
           {/* Messages */}
@@ -141,7 +141,7 @@ export function ConversationalPlanner() {
                     <button
                       key={i}
                       onClick={() => handleSend(prompt)}
-                      className="w-full text-left text-xs p-2.5 rounded border hover:bg-muted/50 transition-colors text-foreground"
+                      className="w-full text-left text-xs p-2.5 rounded-lg border bg-raised hover:bg-raised-2 hover:border-default transition-colors duration-150 text-secondary hover:text-foreground"
                     >
                       {prompt}
                     </button>
@@ -151,7 +151,7 @@ export function ConversationalPlanner() {
             )}
             {messages.map((msg, i) => (
               <div key={i} className={`${msg.role === 'user' ? 'flex justify-end' : ''}`}>
-                <div className={`max-w-[90%] text-xs leading-relaxed ${msg.role === 'user' ? 'bg-primary text-primary-foreground rounded-lg px-3 py-2' : 'text-foreground'}`}>
+                <div className={`max-w-[90%] text-xs leading-relaxed ${msg.role === 'user' ? 'bg-primary text-primary-foreground rounded-xl px-3 py-2' : 'text-foreground'}`}>
                   {msg.role === 'assistant' ? (
                     <div className="space-y-1">
                       {msg.content.split('\n').map((line, j) => {
@@ -165,7 +165,7 @@ export function ConversationalPlanner() {
                         onClick={() => navigate('/simulate')}
                         className="mt-2 inline-flex items-center gap-1 text-primary text-[11px] font-medium hover:underline"
                       >
-                        Open in Simulator <ArrowUpRight className="w-3 h-3" />
+                        Open in Simulator <AppIcon name="arrowUpRight" size="xs" />
                       </button>
                     </div>
                   ) : msg.content}
@@ -190,13 +190,14 @@ export function ConversationalPlanner() {
                 onChange={e => setInput(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && handleSend(input)}
                 placeholder="Ask about orders, capacity, suppliers..."
-                className="flex-1 text-xs px-3 py-2 border rounded bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary"
+                className="flex-1 text-xs px-3 py-2 border border-input rounded-lg bg-raised text-foreground placeholder:text-tertiary focus:outline-none focus:border-active focus:ring-1 focus:ring-ring"
               />
               <button
                 onClick={() => handleSend(input)}
-                className="px-3 py-2 bg-primary text-primary-foreground rounded hover:opacity-90"
+                aria-label="Send"
+                className="px-3 py-2 bg-action-primary text-icon-on-color rounded-lg hover:bg-action-primary-hover transition-colors duration-150"
               >
-                <Send className="w-3.5 h-3.5" />
+                <AppIcon name="send" size="sm" />
               </button>
             </div>
           </div>

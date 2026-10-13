@@ -25,7 +25,7 @@ export default function SupplierPerformance() {
     <AppLayout>
       <div className="p-6 space-y-6">
         <div>
-          <h1 className="text-xl font-bold text-foreground">Supplier Performance</h1>
+          <h1 className="font-display text-display-xl text-foreground">Supplier Performance</h1>
           <p className="text-xs text-muted-foreground mt-0.5">{suppliers.length} active suppliers tracked across both factories</p>
         </div>
 
@@ -33,19 +33,19 @@ export default function SupplierPerformance() {
         <div className="grid grid-cols-4 gap-4">
           <div className="bg-card border rounded-lg p-4">
             <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Total Suppliers</p>
-            <p className="text-2xl font-bold text-foreground mt-1">{suppliers.length}</p>
+            <p className="font-display text-display-metric tabular-nums text-foreground mt-1">{suppliers.length}</p>
           </div>
           <div className="bg-card border rounded-lg p-4">
             <p className="text-[10px] text-muted-foreground uppercase tracking-wider">On Track</p>
-            <p className="text-2xl font-bold text-status-on-track mt-1">{suppliers.filter(s => s.status === 'On Track').length}</p>
+            <p className="font-display text-display-metric tabular-nums text-status-on-track mt-1">{suppliers.filter(s => s.status === 'On Track').length}</p>
           </div>
           <div className="bg-card border rounded-lg p-4">
             <p className="text-[10px] text-muted-foreground uppercase tracking-wider">At Risk</p>
-            <p className="text-2xl font-bold text-status-at-risk mt-1">{suppliers.filter(s => s.status === 'At Risk').length}</p>
+            <p className="font-display text-display-metric tabular-nums text-status-at-risk mt-1">{suppliers.filter(s => s.status === 'At Risk').length}</p>
           </div>
           <div className="bg-card border rounded-lg p-4">
             <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Critical</p>
-            <p className="text-2xl font-bold text-status-critical mt-1">{suppliers.filter(s => s.status === 'Critical').length}</p>
+            <p className="font-display text-display-metric tabular-nums text-status-critical mt-1">{suppliers.filter(s => s.status === 'Critical').length}</p>
           </div>
         </div>
 

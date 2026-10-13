@@ -5,11 +5,11 @@ import { orders, formatRevenue } from '@/data/mockData';
 import { ScatterChart, Scatter, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 
 const statusColors: Record<string, string> = {
-  'On Track': '#CC8F04',
-  'At Risk': '#FF7A00',
-  'Critical': '#DB2900',
-  'Delayed': '#7A1D0A',
-  'Completed': '#A88968',
+  'On Track': 'hsl(var(--status-on-track))',
+  'At Risk': 'hsl(var(--status-at-risk))',
+  'Critical': 'hsl(var(--status-critical))',
+  'Delayed': 'hsl(var(--status-delayed))',
+  'Completed': 'hsl(var(--status-completed))',
 };
 
 export default function OrderPriorityMatrix() {
@@ -34,7 +34,7 @@ export default function OrderPriorityMatrix() {
   return (
     <AppLayout>
       <div className="p-5">
-        <h2 className="text-lg font-bold text-foreground mb-4">Order Priority Matrix</h2>
+        <h2 className="font-display text-display-xl text-foreground mb-5">Order Priority Matrix</h2>
         <div className="filter-bar mb-4">
           <select value={factoryFilter} onChange={e => setFactoryFilter(e.target.value)} className="text-xs px-2 py-1.5 border rounded bg-background text-foreground">
             <option value="All">All Factories</option><option>Pune</option><option>Vadodara</option><option>Unassigned</option>

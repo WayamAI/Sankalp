@@ -1,4 +1,5 @@
 import { AppLayout } from '@/components/layout/AppLayout';
+import { AppIcon } from '@/components/ui/app-icon';
 import { materials, orders, formatRevenue } from '@/data/mockData';
 import { Package, AlertTriangle, CheckCircle } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, LineChart, Line, Area, AreaChart } from 'recharts';
@@ -34,7 +35,7 @@ export default function MaterialAvailability() {
     <AppLayout>
       <div className="p-6 space-y-6">
         <div>
-          <h1 className="text-xl font-bold text-foreground">Material Availability</h1>
+          <h1 className="font-display text-display-xl text-foreground">Material Availability</h1>
           <p className="text-xs text-muted-foreground mt-0.5">Component readiness across the order book</p>
         </div>
 
@@ -42,28 +43,28 @@ export default function MaterialAvailability() {
         <div className="grid grid-cols-4 gap-4">
           <div className="bg-card border rounded-lg p-4">
             <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Total Components</p>
-            <p className="text-2xl font-bold text-foreground mt-1">{summaryStats.total}</p>
+            <p className="font-display text-display-metric tabular-nums text-foreground mt-1">{summaryStats.total}</p>
           </div>
           <div className="bg-card border rounded-lg p-4">
             <div className="flex items-center gap-1.5">
               <CheckCircle className="w-3.5 h-3.5 text-status-on-track" />
               <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Fully Available</p>
             </div>
-            <p className="text-2xl font-bold text-foreground mt-1">{summaryStats.available} <span className="text-sm font-normal text-muted-foreground">({Math.round(summaryStats.available / summaryStats.total * 100)}%)</span></p>
+            <p className="font-display text-display-metric tabular-nums text-foreground mt-1">{summaryStats.available} <span className="text-sm font-normal text-muted-foreground">({Math.round(summaryStats.available / summaryStats.total * 100)}%)</span></p>
           </div>
           <div className="bg-card border rounded-lg p-4">
             <div className="flex items-center gap-1.5">
               <AlertTriangle className="w-3.5 h-3.5 text-status-at-risk" />
               <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Partial</p>
             </div>
-            <p className="text-2xl font-bold text-foreground mt-1">{summaryStats.partial} <span className="text-sm font-normal text-muted-foreground">({Math.round(summaryStats.partial / summaryStats.total * 100)}%)</span></p>
+            <p className="font-display text-display-metric tabular-nums text-foreground mt-1">{summaryStats.partial} <span className="text-sm font-normal text-muted-foreground">({Math.round(summaryStats.partial / summaryStats.total * 100)}%)</span></p>
           </div>
           <div className="bg-card border rounded-lg p-4">
             <div className="flex items-center gap-1.5">
               <AlertTriangle className="w-3.5 h-3.5 text-status-critical" />
               <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Critical Shortage</p>
             </div>
-            <p className="text-2xl font-bold text-foreground mt-1">{summaryStats.critical} <span className="text-sm font-normal text-muted-foreground">({Math.round(summaryStats.critical / summaryStats.total * 100)}%)</span></p>
+            <p className="font-display text-display-metric tabular-nums text-foreground mt-1">{summaryStats.critical} <span className="text-sm font-normal text-muted-foreground">({Math.round(summaryStats.critical / summaryStats.total * 100)}%)</span></p>
           </div>
         </div>
 
@@ -134,7 +135,7 @@ export default function MaterialAvailability() {
               <Area type="monotone" dataKey="demand" stroke="hsl(var(--status-critical))" fill="hsl(var(--status-critical))" fillOpacity={0.15} name="Projected Demand" />
             </AreaChart>
           </ResponsiveContainer>
-          <p className="text-[10px] text-muted-foreground mt-2">⚠ Crossover point: <span className="font-semibold text-status-critical">May 2026</span> — demand exceeds supply. Action required.</p>
+          <p className="text-[10px] text-muted-foreground mt-2"><AppIcon name="warning" size="xs" className="inline-block align-[-2px] mr-1 text-feedback-warning-icon" />Crossover point: <span className="font-semibold text-status-critical">May 2026</span> — demand exceeds supply. Action required.</p>
         </div>
       </div>
     </AppLayout>

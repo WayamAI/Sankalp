@@ -44,7 +44,7 @@ export default function SettingsPage() {
     <AppLayout>
       <div className="p-6 space-y-6">
         <div>
-          <h1 className="text-xl font-bold text-foreground">Settings</h1>
+          <h1 className="font-display text-display-xl text-foreground">Settings</h1>
           <p className="text-xs text-muted-foreground mt-0.5">Planning parameters, constraints, and alert configuration</p>
         </div>
 

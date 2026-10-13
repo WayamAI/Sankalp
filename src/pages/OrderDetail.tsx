@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from 'react-router-dom';
+import { AppIcon } from '@/components/ui/app-icon';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { StatusBadge, PriorityTag, MaterialBar } from '@/components/shared/StatusBadge';
 import { orders, formatRevenue } from '@/data/mockData';
@@ -40,7 +41,7 @@ export default function OrderDetail() {
           </button>
           <div className="flex-1">
             <div className="flex items-center gap-3">
-              <h2 className="text-lg font-bold text-foreground font-mono">{order.id}</h2>
+              <h2 className="font-display text-display-xl text-foreground">{order.id}</h2>
               <PriorityTag priority={order.priority} />
               <StatusBadge status={order.status} size="md" />
               <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded">{order.factory}</span>
@@ -81,7 +82,7 @@ export default function OrderDetail() {
                 {/* Stage details */}
                 <div className="grid grid-cols-3 gap-3">
                   {order.stages.map((stage, i) => (
-                    <div key={i} className={`p-2.5 rounded border ${stage.status === 'delayed' ? 'border-status-critical/30 bg-status-critical/5' : 'border-border/50'}`}>
+                    <div key={i} className={`p-2.5 rounded border ${stage.status === 'delayed' ? 'border-status-critical/30 bg-status-critical/5' : 'border-stroke-muted'}`}>
                       <div className="flex items-center gap-1.5 mb-1">
                         <span className={`w-2 h-2 rounded-full ${stageColors[stage.status]}`} />
                         <span className="text-[11px] font-medium text-foreground">{stage.name}</span>
@@ -174,7 +175,7 @@ export default function OrderDetail() {
               <div className="mt-2 h-2 bg-muted rounded-full overflow-hidden">
                 <div className="h-full bg-status-at-risk rounded-full" style={{ width: '92%' }} />
               </div>
-              <p className="text-[9px] text-status-at-risk mt-1">⚠ Near capacity threshold</p>
+              <p className="text-[9px] text-status-at-risk mt-1"><AppIcon name="warning" size="xs" className="inline-block align-[-2px] mr-1 text-feedback-warning-icon" />Near capacity threshold</p>
             </div>
 
             {/* Risk Summary */}
@@ -182,7 +183,7 @@ export default function OrderDetail() {
               <h3 className="text-xs font-semibold text-foreground mb-3">Risk Summary</h3>
               <div className="flex items-center gap-3 mb-3">
                 <div className="text-center">
-                  <p className="text-2xl font-bold text-status-at-risk">78%</p>
+                  <p className="font-display text-display-metric tabular-nums text-status-at-risk">78%</p>
                   <p className="text-[9px] text-muted-foreground">Delivery Confidence</p>
                 </div>
                 <div className="flex-1 h-3 bg-muted rounded-full overflow-hidden">

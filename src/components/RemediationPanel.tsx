@@ -285,7 +285,7 @@ export default function RemediationPanel({
           {isCommitted ? (
             <button
               disabled
-              className="text-[11px] px-3 py-1.5 bg-[hsl(var(--status-on-track))] text-white rounded font-medium opacity-90 cursor-not-allowed"
+              className="text-[11px] px-3 py-1.5 bg-[hsl(var(--status-on-track))] text-on-color rounded font-medium opacity-90 cursor-not-allowed"
             >
               Committed ✓
             </button>

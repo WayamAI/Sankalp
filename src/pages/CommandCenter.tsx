@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { AppIcon } from '@/components/ui/app-icon';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { MetricCard, StatusBadge, SeverityIndicator } from '@/components/shared/StatusBadge';
 import { orders, alerts, orderStatusCounts, formatRevenue } from '@/data/mockData';
@@ -6,11 +7,11 @@ import { ShieldAlert, Package, TrendingDown, Factory as FactoryIcon, ClipboardLi
 import { PieChart, Pie, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 
 const statusData = [
-  { name: 'On Track', value: orderStatusCounts.onTrack, color: 'hsl(142, 64%, 40%)' },
-  { name: 'At Risk', value: orderStatusCounts.atRisk, color: 'hsl(38, 92%, 50%)' },
-  { name: 'Critical', value: orderStatusCounts.critical, color: 'hsl(0, 80%, 50%)' },
-  { name: 'Delayed', value: orderStatusCounts.delayed, color: 'hsl(0, 55%, 35%)' },
-  { name: 'Completed', value: orderStatusCounts.completed, color: 'hsl(215, 10%, 60%)' },
+  { name: 'On Track', value: orderStatusCounts.onTrack, color: 'hsl(var(--status-on-track))' },
+  { name: 'At Risk', value: orderStatusCounts.atRisk, color: 'hsl(var(--status-at-risk))' },
+  { name: 'Critical', value: orderStatusCounts.critical, color: 'hsl(var(--status-critical))' },
+  { name: 'Delayed', value: orderStatusCounts.delayed, color: 'hsl(var(--status-delayed))' },
+  { name: 'Completed', value: orderStatusCounts.completed, color: 'hsl(var(--status-completed))' },
 ];
 
 const capacityData = [
@@ -113,10 +114,10 @@ export default function CommandCenter() {
                 <XAxis dataKey="week" tick={{ fontSize: 10 }} />
                 <YAxis tick={{ fontSize: 10 }} domain={[0, 100]} />
                 <Tooltip contentStyle={{ fontSize: 11 }} />
-                <Bar dataKey="puneCommitted" stackId="pune" fill="hsl(213, 70%, 42%)" name="Pune Committed" />
-                <Bar dataKey="puneFlexible" stackId="pune" fill="hsl(213, 40%, 65%)" name="Pune Flexible" />
-                <Bar dataKey="vadCommitted" stackId="vad" fill="hsl(142, 64%, 40%)" name="Vadodara Committed" />
-                <Bar dataKey="vadFlexible" stackId="vad" fill="hsl(142, 40%, 65%)" name="Vadodara Flexible" />
+                <Bar dataKey="puneCommitted" stackId="pune" fill="hsl(var(--chart-series-1))" name="Pune Committed" />
+                <Bar dataKey="puneFlexible" stackId="pune" fill="hsl(var(--chart-series-2))" name="Pune Flexible" />
+                <Bar dataKey="vadCommitted" stackId="vad" fill="hsl(var(--chart-series-3))" name="Vadodara Committed" />
+                <Bar dataKey="vadFlexible" stackId="vad" fill="hsl(var(--chart-series-4))" name="Vadodara Flexible" />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -129,7 +130,7 @@ export default function CommandCenter() {
             <h3 className="text-xs font-semibold text-foreground mb-3">Active Alerts</h3>
             <div className="space-y-2">
               {alerts.map(alert => (
-                <div key={alert.id} className="flex gap-2 p-2 rounded bg-muted/30 border border-border/50">
+                <div key={alert.id} className="flex gap-2 p-2 rounded bg-muted/30 border border-stroke-muted">
                   <SeverityIndicator severity={alert.severity} />
                   <div className="flex-1 min-w-0">
                     <p className="text-[11px] text-foreground leading-tight">{alert.message}</p>
@@ -167,7 +168,7 @@ export default function CommandCenter() {
                       <p className="text-[9px] text-muted-foreground">Active Orders</p>
                     </div>
                   </div>
-                  <p className="text-[10px] text-status-at-risk">⚠ {bottleneck}</p>
+                  <p className="text-[10px] text-status-at-risk"><AppIcon name="warning" size="xs" className="inline-block align-[-2px] mr-1 text-feedback-warning-icon" />{bottleneck}</p>
                   <div className="mt-2 space-y-1">
                     {fOrders.slice(0, 3).map(o => (
                       <div key={o.id} className="flex items-center justify-between text-[10px]">

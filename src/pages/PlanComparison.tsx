@@ -23,7 +23,7 @@ export default function PlanComparison() {
   return (
     <AppLayout>
       <div className="p-5">
-        <h2 className="text-lg font-bold text-foreground mb-4">Plan Comparison</h2>
+        <h2 className="font-display text-display-xl text-foreground mb-5">Plan Comparison</h2>
 
         <div className="metric-card mb-4">
           <h3 className="text-xs font-semibold text-foreground mb-3">Side-by-Side KPI Comparison</h3>

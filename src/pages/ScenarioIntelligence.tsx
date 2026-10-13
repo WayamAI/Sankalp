@@ -97,7 +97,7 @@ function UnknownRiskCard({ risk, signals, isAssessmentOpen, onToggleAssessment }
           </span>
           <h3 className="text-[15px] font-medium text-foreground">{risk.title}</h3>
         </div>
-        <span className={`text-2xl font-bold ${probColor}`}>{risk.probabilityPct}%</span>
+        <span className={`font-display text-display-metric tabular-nums ${probColor}`}>{risk.probabilityPct}%</span>
       </div>
 
       <p className="text-xs text-muted-foreground mb-3">{risk.description}</p>
@@ -368,7 +368,7 @@ export default function ScenarioIntelligence() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <h1 className="text-xl font-bold text-foreground">Scenario Intelligence</h1>
+            <h1 className="font-display text-display-xl text-foreground">Scenario Intelligence</h1>
             <div className="flex items-center gap-1.5">
               <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[hsl(var(--status-on-track))] opacity-75" />
@@ -405,15 +405,15 @@ export default function ScenarioIntelligence() {
             {/* Summary stats */}
             <div className="grid grid-cols-3 gap-3">
               <div className="metric-card text-center">
-                <p className="text-2xl font-bold text-foreground">{unknownRisks.length}</p>
+                <p className="font-display text-display-metric tabular-nums text-foreground">{unknownRisks.length}</p>
                 <p className="text-[11px] text-muted-foreground">Active risk scenarios tracked</p>
               </div>
               <div className="metric-card text-center border-l-2 border-l-[hsl(var(--status-at-risk))]">
-                <p className="text-2xl font-bold text-[hsl(var(--status-at-risk))]">{kuCount}</p>
+                <p className="font-display text-display-metric tabular-nums text-[hsl(var(--status-at-risk))]">{kuCount}</p>
                 <p className="text-[11px] text-muted-foreground">Known unknowns — quantifiable</p>
               </div>
               <div className="metric-card text-center border-l-2 border-l-[hsl(var(--status-critical))]">
-                <p className="text-2xl font-bold text-[hsl(var(--status-critical))]">{uuCount}</p>
+                <p className="font-display text-display-metric tabular-nums text-[hsl(var(--status-critical))]">{uuCount}</p>
                 <p className="text-[11px] text-muted-foreground">Unknown unknowns — black swan</p>
               </div>
             </div>
@@ -501,15 +501,15 @@ export default function ScenarioIntelligence() {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-3">
               <div className="metric-card text-center">
-                <p className="text-2xl font-bold text-foreground">23</p>
+                <p className="font-display text-display-metric tabular-nums text-foreground">23</p>
                 <p className="text-[11px] text-muted-foreground">Disruptions last 12 months</p>
               </div>
               <div className="metric-card text-center border-l-2 border-l-[hsl(var(--status-at-risk))]">
-                <p className="text-2xl font-bold text-[hsl(var(--status-at-risk))]">14</p>
+                <p className="font-display text-display-metric tabular-nums text-[hsl(var(--status-at-risk))]">14</p>
                 <p className="text-[11px] text-muted-foreground">Had advance warning signals</p>
               </div>
               <div className="metric-card text-center border-l-2 border-l-[hsl(var(--status-critical))]">
-                <p className="text-2xl font-bold text-[hsl(var(--status-critical))]">9</p>
+                <p className="font-display text-display-metric tabular-nums text-[hsl(var(--status-critical))]">9</p>
                 <p className="text-[11px] text-muted-foreground">Blindsided — no signal</p>
               </div>
             </div>
@@ -547,7 +547,7 @@ export default function ScenarioIntelligence() {
                   <div key={s.id}>
                     <button
                       onClick={() => setExpandedSignal(expandedSignal === s.id ? null : s.id)}
-                      className={`w-full flex items-center gap-3 px-4 py-2.5 text-left hover:bg-muted/30 transition-colors ${i > 0 ? 'border-t border-border/50' : ''}`}
+                      className={`w-full flex items-center gap-3 px-4 py-2.5 text-left hover:bg-muted/30 transition-colors ${i > 0 ? 'border-t border-stroke-muted' : ''}`}
                     >
                       <span className="text-xs font-medium text-foreground w-40 flex-shrink-0">{s.label}</span>
                       <span className="text-xs font-bold text-foreground w-24">{s.value}</span>

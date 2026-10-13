@@ -85,7 +85,7 @@ export default function CurrentPlan() {
     <AppLayout>
       <div className="p-5">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-bold text-foreground">Current Production Plan</h2>
+          <h2 className="font-display text-display-xl text-foreground">Current Production Plan</h2>
           <div className="flex gap-2">
             {['Both','Pune','Vadodara'].map(f => (
               <button key={f} onClick={() => setFactoryView(f)}
@@ -141,7 +141,7 @@ export default function CurrentPlan() {
                     <div className="flex ml-28">
                       {utils.map((u, i) => (
                         <div key={i} className="flex-1 h-1.5" style={{
-                          backgroundColor: u > 95 ? 'hsl(0,80%,50%)' : u > 80 ? 'hsl(38,92%,50%)' : 'hsl(142,64%,40%)',
+                          backgroundColor: u > 95 ? 'hsl(var(--status-critical))' : u > 80 ? 'hsl(var(--status-at-risk))' : 'hsl(var(--status-on-track))',
                           opacity: 0.6,
                         }} />
                       ))}

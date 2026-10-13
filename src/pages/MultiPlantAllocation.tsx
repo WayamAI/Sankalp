@@ -21,7 +21,7 @@ export default function MultiPlantAllocation() {
   return (
     <AppLayout>
       <div className="p-5">
-        <h2 className="text-lg font-bold text-foreground mb-4">Multi-Plant Allocation</h2>
+        <h2 className="font-display text-display-xl text-foreground mb-5">Multi-Plant Allocation</h2>
 
         <div className="metric-card mb-4">
           <h3 className="text-xs font-semibold text-foreground mb-3">Allocation Recommendations</h3>
@@ -55,15 +55,15 @@ export default function MultiPlantAllocation() {
               <XAxis dataKey="month" tick={{ fontSize: 11 }} />
               <YAxis tick={{ fontSize: 10 }} domain={[0, 100]} />
               <Tooltip contentStyle={{ fontSize: 11 }} />
-              <ReferenceLine y={70} stroke="hsl(142,64%,40%)" strokeDasharray="3 3" label={{ value: '70%', fontSize: 9, fill: 'hsl(142,64%,40%)' }} />
-              <ReferenceLine y={90} stroke="hsl(0,80%,50%)" strokeDasharray="3 3" label={{ value: '90%', fontSize: 9, fill: 'hsl(0,80%,50%)' }} />
-              <Bar dataKey="pune" fill="hsl(213, 70%, 42%)" name="Pune" radius={[2,2,0,0]} />
-              <Bar dataKey="vadodara" fill="hsl(142, 64%, 40%)" name="Vadodara" radius={[2,2,0,0]} />
+              <ReferenceLine y={70} stroke="hsl(var(--status-on-track))" strokeDasharray="3 3" label={{ value: '70%', fontSize: 9, fill: 'hsl(var(--status-on-track))' }} />
+              <ReferenceLine y={90} stroke="hsl(var(--status-critical))" strokeDasharray="3 3" label={{ value: '90%', fontSize: 9, fill: 'hsl(var(--status-critical))' }} />
+              <Bar dataKey="pune" fill="hsl(var(--chart-series-1))" name="Pune" radius={[2,2,0,0]} />
+              <Bar dataKey="vadodara" fill="hsl(var(--chart-series-3))" name="Vadodara" radius={[2,2,0,0]} />
             </BarChart>
           </ResponsiveContainer>
           <div className="flex items-center justify-center gap-4 mt-2">
-            <span className="flex items-center gap-1.5 text-[10px] text-muted-foreground"><span className="w-3 h-2 rounded-sm bg-primary" />Pune</span>
-            <span className="flex items-center gap-1.5 text-[10px] text-muted-foreground"><span className="w-3 h-2 rounded-sm bg-status-on-track" />Vadodara</span>
+            <span className="flex items-center gap-1.5 text-[10px] text-muted-foreground"><span className="w-3 h-2 rounded-sm bg-[hsl(var(--chart-series-1))]" />Pune</span>
+            <span className="flex items-center gap-1.5 text-[10px] text-muted-foreground"><span className="w-3 h-2 rounded-sm bg-[hsl(var(--chart-series-3))]" />Vadodara</span>
             <span className="text-[10px] text-status-on-track">— Ideal range: 70-90%</span>
           </div>
         </div>

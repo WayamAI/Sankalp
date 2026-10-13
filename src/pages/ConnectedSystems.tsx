@@ -19,7 +19,7 @@ export default function ConnectedSystems() {
     <AppLayout>
       <div className="p-6 space-y-6">
         <div>
-          <h1 className="text-xl font-bold text-foreground">Connected Systems</h1>
+          <h1 className="font-display text-display-xl text-foreground">Connected Systems</h1>
           <p className="text-xs text-muted-foreground mt-0.5">Integration health and data sync status</p>
         </div>
 
@@ -27,19 +27,19 @@ export default function ConnectedSystems() {
         <div className="grid grid-cols-4 gap-4">
           <div className="bg-card border rounded-lg p-4">
             <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Total Systems</p>
-            <p className="text-2xl font-bold text-foreground mt-1">{integrations.length}</p>
+            <p className="font-display text-display-metric tabular-nums text-foreground mt-1">{integrations.length}</p>
           </div>
           <div className="bg-card border rounded-lg p-4">
             <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Healthy</p>
-            <p className="text-2xl font-bold text-status-on-track mt-1">{integrations.filter(i => i.status === 'Green').length}</p>
+            <p className="font-display text-display-metric tabular-nums text-status-on-track mt-1">{integrations.filter(i => i.status === 'Green').length}</p>
           </div>
           <div className="bg-card border rounded-lg p-4">
             <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Degraded</p>
-            <p className="text-2xl font-bold text-status-at-risk mt-1">{integrations.filter(i => i.status === 'Amber').length}</p>
+            <p className="font-display text-display-metric tabular-nums text-status-at-risk mt-1">{integrations.filter(i => i.status === 'Amber').length}</p>
           </div>
           <div className="bg-card border rounded-lg p-4">
             <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Records (24h)</p>
-            <p className="text-2xl font-bold text-foreground mt-1">{(integrations.reduce((s, i) => s + i.records24h, 0) / 1000).toFixed(0)}K</p>
+            <p className="font-display text-display-metric tabular-nums text-foreground mt-1">{(integrations.reduce((s, i) => s + i.records24h, 0) / 1000).toFixed(0)}K</p>
           </div>
         </div>
 

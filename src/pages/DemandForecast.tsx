@@ -1,4 +1,5 @@
 import { AppLayout } from '@/components/layout/AppLayout';
+import { AppIcon } from '@/components/ui/app-icon';
 import { AreaChart, Area, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend, ReferenceLine } from 'recharts';
 
 const forecastData = [
@@ -30,26 +31,26 @@ export default function DemandForecast() {
     <AppLayout>
       <div className="p-6 space-y-6">
         <div>
-          <h1 className="text-xl font-bold text-foreground">Demand Forecast</h1>
+          <h1 className="font-display text-display-xl text-foreground">Demand Forecast</h1>
           <p className="text-xs text-muted-foreground mt-0.5">12-month order intake forecast with capacity overlay</p>
         </div>
 
         <div className="grid grid-cols-4 gap-4">
           <div className="bg-card border rounded-lg p-4">
             <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Forecast (Next 12M)</p>
-            <p className="text-2xl font-bold text-foreground mt-1">562 units</p>
+            <p className="font-display text-display-metric tabular-nums text-foreground mt-1">562 units</p>
           </div>
           <div className="bg-card border rounded-lg p-4">
             <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Revenue Forecast</p>
-            <p className="text-2xl font-bold text-foreground mt-1">₹5,020 Cr</p>
+            <p className="font-display text-display-metric tabular-nums text-foreground mt-1">₹5,020 Cr</p>
           </div>
           <div className="bg-card border rounded-lg p-4">
             <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Capacity Constrained Months</p>
-            <p className="text-2xl font-bold text-status-critical mt-1">3</p>
+            <p className="font-display text-display-metric tabular-nums text-status-critical mt-1">3</p>
           </div>
           <div className="bg-card border rounded-lg p-4">
             <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Forecast Accuracy (3M)</p>
-            <p className="text-2xl font-bold text-status-on-track mt-1">91.2%</p>
+            <p className="font-display text-display-metric tabular-nums text-status-on-track mt-1">91.2%</p>
           </div>
         </div>
 
@@ -69,7 +70,7 @@ export default function DemandForecast() {
               )}
             </AreaChart>
           </ResponsiveContainer>
-          <p className="text-[10px] text-muted-foreground mt-2">⚠ Months exceeding capacity: <span className="font-semibold text-status-critical">Jun, Aug, Sep 2026</span></p>
+          <p className="text-[10px] text-muted-foreground mt-2"><AppIcon name="warning" size="xs" className="inline-block align-[-2px] mr-1 text-feedback-warning-icon" />Months exceeding capacity: <span className="font-semibold text-status-critical">Jun, Aug, Sep 2026</span></p>
         </div>
 
         {/* By Product */}
@@ -81,12 +82,12 @@ export default function DemandForecast() {
               <YAxis tick={{ fontSize: 10 }} stroke="hsl(var(--muted-foreground))" />
               <Tooltip contentStyle={{ fontSize: 11, background: 'hsl(var(--card))', border: '1px solid hsl(var(--border))' }} />
               <Legend wrapperStyle={{ fontSize: 10 }} />
-              <Bar dataKey="GT-7000" stackId="a" fill="hsl(213, 70%, 42%)" />
-              <Bar dataKey="GT-9500" stackId="a" fill="hsl(213, 70%, 55%)" />
-              <Bar dataKey="ST-4000" stackId="a" fill="hsl(38, 92%, 50%)" />
-              <Bar dataKey="CP-2200" stackId="a" fill="hsl(142, 64%, 40%)" />
-              <Bar dataKey="GP-6000" stackId="a" fill="hsl(280, 60%, 55%)" />
-              <Bar dataKey="GP-8500" stackId="a" fill="hsl(0, 55%, 50%)" />
+              <Bar dataKey="GT-7000" stackId="a" fill="hsl(var(--chart-series-1))" />
+              <Bar dataKey="GT-9500" stackId="a" fill="hsl(var(--chart-series-2))" />
+              <Bar dataKey="ST-4000" stackId="a" fill="hsl(var(--chart-series-3))" />
+              <Bar dataKey="CP-2200" stackId="a" fill="hsl(var(--chart-series-4))" />
+              <Bar dataKey="GP-6000" stackId="a" fill="hsl(var(--chart-series-5))" />
+              <Bar dataKey="GP-8500" stackId="a" fill="hsl(var(--chart-series-6))" />
             </BarChart>
           </ResponsiveContainer>
         </div>

@@ -1,74 +1,339 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+/* Fonts (Geist, Geist Mono, Michroma) are loaded once in index.html. */
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Wayam design system — 2-tier token architecture
+ *
+ *   REFERENCE (raw values)  →  SEMANTIC (intent)  →  Tailwind utilities  →  components
+ *
+ * All colour tokens are HSL channel triplets ("H S% L%") so Tailwind can apply
+ * opacity modifiers (e.g. bg-status-critical/10). Translucent semantic tokens
+ * (strokes, tertiary actions, feedback backgrounds) carry their own alpha
+ * ("H S% L% / a") and therefore must NOT be combined with opacity modifiers.
+ *
+ * Components consume semantic tokens only. The product is dark-mode-first;
+ * light mode can be added later by remapping the semantic layer only.
+ */
+
 @layer base {
+  /* ------------------------------------------------------------------
+     TIER 1 — REFERENCE TOKENS (raw palette, never used by components)
+  ------------------------------------------------------------------ */
   :root {
-    --background: 30 55% 95%;
-    --foreground: 18 40% 10%;
+    /* gray */
+    --ref-gray-50: 0 0% 98%; /* #FAFAFA */
+    --ref-gray-100: 0 0% 94.9%; /* #F2F2F2 */
+    --ref-gray-200: 0 0% 89.8%; /* #E5E5E5 */
+    --ref-gray-300: 0 0% 83.1%; /* #D4D4D4 */
+    --ref-gray-400: 0 0% 68.6%; /* #AFAFAF */
+    --ref-gray-500: 0 0% 54.1%; /* #8A8A8A */
+    --ref-gray-550: 0 0% 45.1%; /* #737373 */
+    --ref-gray-600: 0 0% 38.4%; /* #626262 */
+    --ref-gray-650: 0 0% 32.2%; /* #525252 */
+    --ref-gray-700: 0 0% 27.5%; /* #464646 */
+    --ref-gray-750: 0 0% 23.1%; /* #3B3B3B */
+    --ref-gray-800: 0 0% 19.6%; /* #323232 */
+    --ref-gray-825: 0 0% 16.5%; /* #2A2A2A */
+    --ref-gray-850: 0 0% 13.7%; /* #232323 */
+    --ref-gray-900: 0 0% 9.8%; /* #191919 */
+    --ref-gray-950: 0 0% 6.3%; /* #101010 */
 
-    --card: 30 40% 99%;
-    --card-foreground: 18 40% 10%;
+    /* white */
+    --ref-white: 0 0% 100%; /* #FFFFFF */
 
-    --popover: 30 40% 99%;
-    --popover-foreground: 18 40% 10%;
+    /* black */
+    --ref-black: 0 0% 0%; /* #000000 */
 
-    --primary: 16 90% 38%;
-    --primary-foreground: 0 0% 100%;
+    /* red */
+    --ref-red-50: 355.7 100% 97.3%; /* #FFF1F2 */
+    --ref-red-100: 356.1 100% 93.9%; /* #FFE0E2 */
+    --ref-red-200: 357 100% 88%; /* #FFC2C5 */
+    --ref-red-300: 357.1 100% 79.4%; /* #FF969B */
+    --ref-red-400: 357.3 100% 69.6%; /* #FF646B */
+    --ref-red-500: 357.5 100% 62.7%; /* #FF4149 */
+    --ref-red-600: 357.3 80.4% 55.9%; /* #E9343C */
+    --ref-red-700: 357 66.4% 46.7%; /* #C62830 */
+    --ref-red-800: 357.3 65.2% 39.4%; /* #A62329 */
+    --ref-red-900: 357.2 63.1% 32.9%; /* #891F24 */
+    --ref-red-950: 357.1 70.5% 17.3%; /* #4B0D10 */
 
-    --secondary: 28 55% 88%;
-    --secondary-foreground: 18 40% 10%;
+    /* purple */
+    --ref-purple-50: 272 100% 97.1%; /* #F8F0FF */
+    --ref-purple-100: 271.7 100% 92.9%; /* #EEDBFF */
+    --ref-purple-200: 275.4 75.3% 84.1%; /* #DCB8F5 */
+    --ref-purple-300: 278.9 70.1% 73.7%; /* #CA8DEB */
+    --ref-purple-400: 283.7 61.6% 60.2%; /* #B65BD8 */
+    --ref-purple-500: 286.4 56.4% 47.6%; /* #9F35BE */
+    --ref-purple-600: 285.6 59% 40.2%; /* #862AA3 */
+    --ref-purple-700: 284.4 57.5% 34.1%; /* #6F2589 */
+    --ref-purple-800: 284.1 54.5% 28.4%; /* #5B2170 */
+    --ref-purple-900: 283.5 53.4% 22.7%; /* #481B59 */
+    --ref-purple-950: 283.5 58.8% 13.3%; /* #2B0E36 */
 
-    --muted: 28 40% 91%;
-    --muted-foreground: 22 25% 40%;
+    /* blue */
+    --ref-blue-50: 204.7 100% 96.7%; /* #EEF8FF */
+    --ref-blue-100: 204.6 100% 92.4%; /* #D8EFFF */
+    --ref-blue-200: 202.4 87% 84.9%; /* #B7E1FA */
+    --ref-blue-300: 201.1 83.1% 74.5%; /* #88CEF4 */
+    --ref-blue-400: 202 78.9% 62.7%; /* #55B4EB */
+    --ref-blue-500: 203.7 70.9% 51.6%; /* #2C96DB */
+    --ref-blue-600: 206.4 70.4% 43.7%; /* #2179BE */
+    --ref-blue-700: 209.1 68.4% 37.3%; /* #1E61A0 */
+    --ref-blue-800: 209.7 64.8% 31.2%; /* #1C5083 */
+    --ref-blue-900: 210 62.7% 26.3%; /* #19436D */
+    --ref-blue-950: 212.1 67.4% 16.9%; /* #0E2948 */
 
-    --accent: 28 70% 84%;
-    --accent-foreground: 16 90% 28%;
+    /* cyan */
+    --ref-cyan-50: 189.5 100% 96.3%; /* #ECFCFF */
+    --ref-cyan-100: 186.8 88% 90.2%; /* #D0F7FC */
+    --ref-cyan-200: 186.1 81.4% 81%; /* #A7EEF6 */
+    --ref-cyan-300: 185.8 76.5% 68.2%; /* #70E0EC */
+    --ref-cyan-400: 186.6 70% 54.3%; /* #39CADC */
+    --ref-cyan-500: 187.6 79% 42.9%; /* #17AEC4 */
+    --ref-cyan-600: 189.2 79.1% 35.7%; /* #138DA3 */
+    --ref-cyan-700: 191.1 73.1% 30.6%; /* #157287 */
+    --ref-cyan-800: 191.9 65.2% 25.9%; /* #175C6D */
+    --ref-cyan-900: 193 61.1% 22.2%; /* #164C5B */
+    --ref-cyan-950: 193.2 75.8% 12.9%; /* #082F3A */
 
-    --destructive: 8 100% 42%;
-    --destructive-foreground: 0 0% 100%;
+    /* teal */
+    --ref-teal-50: 172.9 81% 95.9%; /* #ECFDFB */
+    --ref-teal-100: 172.5 74.1% 89.4%; /* #D0F8F3 */
+    --ref-teal-200: 173.3 66.7% 78.8%; /* #A5EDE5 */
+    --ref-teal-300: 173.9 61.4% 65.5%; /* #71DDD2 */
+    --ref-teal-400: 175 54.1% 52.2%; /* #43C7BC */
+    --ref-teal-500: 175.5 64.3% 40.6%; /* #25AAA0 */
+    --ref-teal-600: 176.6 62.4% 33.3%; /* #208A84 */
+    --ref-teal-700: 177 56.6% 28%; /* #1F706C */
+    --ref-teal-800: 177.9 47.5% 23.9%; /* #205A58 */
+    --ref-teal-900: 178.6 42.3% 20.4%; /* #1E4A49 */
+    --ref-teal-950: 180 55.2% 11.4%; /* #0D2D2D */
 
-    --border: 25 45% 80%;
-    --input: 25 45% 80%;
-    --ring: 16 90% 38%;
+    /* green */
+    --ref-green-50: 140 60% 96.1%; /* #EFFBF3 */
+    --ref-green-100: 141.6 55.6% 91.2%; /* #DCF5E5 */
+    --ref-green-200: 139.6 52.3% 82.7%; /* #BCEACB */
+    --ref-green-300: 141.9 48.7% 70.2%; /* #8ED8A9 */
+    --ref-green-400: 142.7 45.4% 57.6%; /* #62C487 */
+    --ref-green-500: 142.7 46.8% 46.5%; /* #3FAE69 */
+    --ref-green-600: 143.1 48.1% 37.1%; /* #318C54 */
+    --ref-green-700: 143.5 44.5% 30.4%; /* #2B7046 */
+    --ref-green-800: 143.5 39.5% 25.3%; /* #275A3B */
+    --ref-green-900: 144 37% 21.2%; /* #224A32 */
+    --ref-green-950: 146.4 43.9% 11.2%; /* #10291B */
 
-    --radius: 0.375rem;
+    /* yellow */
+    --ref-yellow-50: 51 100% 96.1%; /* #FFFCEB */
+    --ref-yellow-100: 51.6 100% 88.8%; /* #FFF7C6 */
+    --ref-yellow-200: 50.9 100% 76.7%; /* #FFED88 */
+    --ref-yellow-300: 49.2 100% 65.1%; /* #FFDF4D */
+    --ref-yellow-400: 47.1 100% 58.8%; /* #FFD22D */
+    --ref-yellow-500: 45 93.7% 50.6%; /* #F7BC0B */
+    --ref-yellow-600: 40.7 94.6% 43.7%; /* #D99506 */
+    --ref-yellow-700: 36 91.2% 35.5%; /* #AD6B08 */
+    --ref-yellow-800: 32.6 83.2% 30.4%; /* #8E530D */
+    --ref-yellow-900: 30.3 74.8% 26.5%; /* #764411 */
+    --ref-yellow-950: 29.1 88.9% 14.1%; /* #442304 */
 
-    /* Status system — all warm/orange family, differentiated by lightness & saturation */
-    --status-on-track: 42 95% 40%;
-    --status-at-risk: 28 100% 50%;
-    --status-critical: 8 100% 42%;
-    --status-delayed: 8 90% 27%;
-    --status-completed: 25 35% 55%;
+    /* amber */
+    --ref-amber-50: 42 100% 96.1%; /* #FFF9EB */
+    --ref-amber-100: 43.6 100% 87.1%; /* #FFEDBD */
+    --ref-amber-200: 43.7 100% 75.5%; /* #FFDD82 */
+    --ref-amber-300: 41.8 100% 65.1%; /* #FFC94D */
+    --ref-amber-400: 39.7 100% 58.2%; /* #FFB72A */
+    --ref-amber-500: 36.7 92.1% 50.2%; /* #F59A0B */
+    --ref-amber-600: 33 94.5% 42.9%; /* #D57806 */
+    --ref-amber-700: 27.8 89% 35.7%; /* #AC550A */
+    --ref-amber-800: 25.4 80.4% 30%; /* #8A430F */
+    --ref-amber-900: 24.7 75.2% 25.3%; /* #713810 */
+    --ref-amber-950: 22.6 85.9% 13.9%; /* #421C05 */
 
-    /* Priority */
-    --priority-p1: 8 100% 42%;
-    --priority-p2: 28 100% 50%;
-    --priority-p3: 42 92% 43%;
-    --priority-p4: 25 35% 55%;
+    /* orange */
+    --ref-orange-50: 30 100% 96.5%; /* #FFF6ED */
+    --ref-orange-100: 31.8 100% 90.4%; /* #FFE8CE */
+    --ref-orange-200: 30.9 100% 81%; /* #FFD09E */
+    --ref-orange-300: 30.4 100% 69.8%; /* #FFB365 */
+    --ref-orange-400: 27.5 100% 62%; /* #FF963D */
+    --ref-orange-500: 25.1 100% 55.5%; /* #FF7B1C */
+    --ref-orange-600: 21.5 87.9% 48.6%; /* #E95D0F */
+    --ref-orange-700: 18.5 85.6% 40.8%; /* #C1460F */
+    --ref-orange-800: 16.1 77% 34.1%; /* #9A3814 */
+    --ref-orange-900: 16.2 72.2% 28.2%; /* #7C3014 */
+    --ref-orange-950: 14 81.1% 14.5%; /* #431507 */
+
+    /* deep-orange */
+    --ref-deep-orange-50: 11.2 100% 96.9%; /* #FFF2EF */
+    --ref-deep-orange-100: 11.4 100% 91.8%; /* #FFDDD5 */
+    --ref-deep-orange-200: 11.6 100% 82.7%; /* #FFB8A7 */
+    --ref-deep-orange-300: 11.7 100% 72.7%; /* #FF8F74 */
+    --ref-deep-orange-400: 10.8 100% 64.1%; /* #FF6948 */
+    --ref-deep-orange-500: 10 100% 57.8%; /* #FF4C28 */
+    --ref-deep-orange-600: 8.7 85.7% 50.8%; /* #ED3516 */
+    --ref-deep-orange-700: 7.9 84.3% 42.4%; /* #C72911 */
+    --ref-deep-orange-800: 7.2 78.9% 35.3%; /* #A12413 */
+    --ref-deep-orange-900: 5.9 73.7% 29.8%; /* #841F14 */
+    --ref-deep-orange-950: 5.5 82.3% 15.5%; /* #480D07 */
+  }
+
+  /* ------------------------------------------------------------------
+     TIER 2 — SEMANTIC TOKENS (dark mode)
+  ------------------------------------------------------------------ */
+  :root {
+    /* Text */
+    --text-primary: var(--ref-gray-50);
+    --text-secondary: var(--ref-gray-300);
+    --text-tertiary: var(--ref-gray-500);
+    --text-quaternary: var(--ref-gray-600);
+    --text-on-color: var(--ref-black);
+
+    /* Icon */
+    --icon-primary: var(--ref-gray-50);
+    --icon-secondary: var(--ref-gray-300);
+    --icon-tertiary: var(--ref-gray-500);
+    --icon-quaternary: var(--ref-gray-600);
+    --icon-on-color: var(--ref-black);
+
+    /* Stroke (translucent) */
+    --stroke-default: var(--ref-white) / 0.14;
+    --stroke-active: var(--ref-white) / 0.24;
+    --stroke-muted: var(--ref-white) / 0.08;
+    --stroke-disabled: var(--ref-white) / 0.04;
+    --stroke-on-color: var(--ref-black) / 0.18;
+
+    /* Surface */
+    --surface-page-background: var(--ref-black);
+    --surface-container: var(--ref-gray-950);
+    --surface-raised: var(--ref-gray-900);
+    --surface-raised-x2: var(--ref-gray-850);
+    --surface-action: var(--ref-gray-900);
+    --surface-scroll-bar: var(--ref-gray-750);
+
+    /* Action surface */
+    --action-primary-default: var(--ref-gray-50);
+    --action-primary-hover: var(--ref-gray-200);
+    --action-primary-focused: var(--ref-white);
+    --action-primary-disabled: var(--ref-gray-700);
+    --action-primary-content: var(--ref-black);
+
+    --action-secondary-default: var(--ref-gray-850);
+    --action-secondary-hover: var(--ref-gray-800);
+    --action-secondary-focused: var(--ref-gray-750);
+    --action-secondary-disabled: var(--ref-gray-950);
+
+    --action-tertiary-default: var(--ref-black) / 0;
+    --action-tertiary-hover: var(--ref-white) / 0.06;
+    --action-tertiary-focused: var(--ref-white) / 0.10;
+    --action-tertiary-disabled: var(--ref-black) / 0;
+
+    /* Feedback */
+    --feedback-success-content: var(--ref-green-300);
+    --feedback-success-icon: var(--ref-green-400);
+    --feedback-success-stroke: var(--ref-green-700);
+    --feedback-success-background: var(--ref-green-500) / 0.12;
+
+    --feedback-info-content: var(--ref-blue-300);
+    --feedback-info-icon: var(--ref-blue-400);
+    --feedback-info-stroke: var(--ref-blue-700);
+    --feedback-info-background: var(--ref-blue-500) / 0.12;
+
+    --feedback-neutral-content: var(--ref-gray-300);
+    --feedback-neutral-icon: var(--ref-gray-400);
+    --feedback-neutral-stroke: var(--ref-gray-650);
+    --feedback-neutral-background: var(--ref-white) / 0.06;
+
+    --feedback-warning-content: var(--ref-orange-300);
+    --feedback-warning-icon: var(--ref-orange-400);
+    --feedback-warning-stroke: var(--ref-orange-700);
+    --feedback-warning-background: var(--ref-orange-500) / 0.12;
+
+    --feedback-error-content: var(--ref-red-300);
+    --feedback-error-icon: var(--ref-red-400);
+    --feedback-error-stroke: var(--ref-red-700);
+    --feedback-error-background: var(--ref-red-500) / 0.12;
+
+    /* Planmaster domain semantics → feedback family (opaque, accept /opacity) */
+    --status-on-track: var(--ref-green-400);   /* success */
+    --status-at-risk: var(--ref-orange-400);   /* warning */
+    --status-critical: var(--ref-red-400);     /* error */
+    --status-delayed: var(--ref-red-600);      /* error, escalated */
+    --status-completed: var(--ref-gray-500);   /* neutral */
+
+    --priority-p1: var(--ref-red-400);
+    --priority-p2: var(--ref-orange-400);
+    --priority-p3: var(--ref-yellow-400);
+    --priority-p4: var(--ref-gray-500);
+
+    /* Data visualisation — monochrome series, red threshold */
+    --chart-committed: var(--ref-gray-200);
+    --chart-tentative: var(--ref-gray-550);
+    --chart-available: var(--ref-gray-800);
+    --chart-threshold: var(--ref-red-400);
+    --chart-series-1: var(--ref-gray-200);
+    --chart-series-2: var(--ref-gray-600);
+    --chart-series-3: var(--ref-blue-400);
+    --chart-series-4: var(--ref-blue-800);
+    --chart-series-5: var(--ref-teal-400);
+    --chart-series-6: var(--ref-purple-300);
+
+    /* Legacy surface aliases kept for existing components */
+    --surface-elevated: var(--surface-raised);
+    --surface-sunken: var(--surface-page-background);
+
+    /* shadcn/ui contract → semantic tokens (keeps every existing class working) */
+    --background: var(--surface-page-background);
+    --foreground: var(--text-primary);
+
+    --card: var(--surface-container);
+    --card-foreground: var(--text-primary);
+
+    --popover: var(--surface-raised);
+    --popover-foreground: var(--text-primary);
+
+    --primary: var(--action-primary-default);
+    --primary-foreground: var(--action-primary-content);
+
+    --secondary: var(--action-secondary-default);
+    --secondary-foreground: var(--text-primary);
+
+    --muted: var(--surface-raised);
+    --muted-foreground: var(--text-tertiary);
+
+    --accent: var(--surface-raised-x2);
+    --accent-foreground: var(--text-primary);
+
+    --destructive: var(--ref-red-400);
+    --destructive-foreground: var(--text-on-color);
+
+    --border: var(--stroke-muted);
+    --input: var(--stroke-default);
+    --ring: var(--ref-gray-400);
+
+    --radius: 0.625rem;
 
     /* Sidebar */
-    --sidebar-background: 30 60% 93%;
-    --sidebar-foreground: 20 35% 25%;
-    --sidebar-primary: 16 90% 38%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 28 70% 85%;
-    --sidebar-accent-foreground: 18 45% 15%;
-    --sidebar-border: 25 40% 82%;
-    --sidebar-ring: 16 90% 38%;
-    --sidebar-muted: 25 25% 42%;
+    --sidebar-background: var(--surface-container);
+    --sidebar-foreground: var(--text-secondary);
+    --sidebar-primary: var(--action-primary-default);
+    --sidebar-primary-foreground: var(--action-primary-content);
+    --sidebar-accent: var(--surface-raised);
+    --sidebar-accent-foreground: var(--text-primary);
+    --sidebar-border: var(--stroke-muted);
+    --sidebar-ring: var(--ref-gray-400);
+    --sidebar-muted: var(--text-tertiary);
 
-    /* Charts */
-    --chart-committed: 16 90% 38%;
-    --chart-tentative: 30 75% 62%;
-    --chart-available: 30 35% 85%;
-    --chart-threshold: 8 100% 42%;
+    /* Icon size scale */
+    --icon-size-xs: 12px;
+    --icon-size-sm: 14px;
+    --icon-size-md: 16px;
+    --icon-size-lg: 18px;
+    --icon-size-xl: 20px;
+    --icon-size-2xl: 24px;
+    --icon-size-3xl: 28px;
 
-    /* Surfaces */
-    --surface-elevated: 30 40% 99%;
-    --surface-sunken: 30 45% 92%;
+    color-scheme: dark;
   }
 }
 
@@ -79,37 +344,59 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    letter-spacing: -0.01em;
   }
 
   code, .font-mono {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: theme('fontFamily.mono');
+    letter-spacing: 0;
+  }
+
+  /* Michroma ships one weight; never synthesise bold */
+  .font-display {
+    font-weight: 400;
+    font-synthesis: none;
+  }
+
+  /* Uniform lightweight outline across every Lucide icon */
+  svg.lucide {
+    stroke-width: 1.75;
+  }
+
+  /* Default keyboard focus ring; components with their own focus-visible:ring opt out via outline-none */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
   }
 }
 
 @layer components {
   .metric-card {
-    @apply bg-card rounded-md border p-4 shadow-sm;
+    @apply bg-card rounded-lg border p-4;
   }
 
   .data-table {
-    @apply w-full text-sm;
+    @apply w-full text-sm tabular-nums;
   }
 
   .data-table th {
-    @apply text-left text-xs font-semibold uppercase tracking-wider text-muted-foreground px-3 py-2.5 border-b bg-muted/50 select-none cursor-pointer hover:text-foreground transition-colors;
+    @apply text-left text-caption font-medium uppercase whitespace-nowrap tracking-wider text-muted-foreground px-3 py-2.5 border-b bg-raised select-none cursor-pointer hover:text-secondary transition-colors;
   }
 
   .data-table td {
-    @apply px-3 py-2 border-b border-border/50 text-foreground;
+    @apply px-3 py-2 border-b border-stroke-muted text-foreground;
+  }
+
+  .data-table .font-mono {
+    @apply whitespace-nowrap;
   }
 
   .data-table tr:hover td {
-    @apply bg-muted/30;
+    @apply bg-raised;
   }
 
   .data-table tr {
-    @apply cursor-pointer transition-colors;
+    @apply cursor-pointer transition-colors duration-150;
   }
 
   .status-dot {
@@ -117,24 +404,54 @@
   }
 
   .sidebar-section-label {
-    @apply text-[10px] font-semibold uppercase tracking-[0.1em] px-3 py-2 text-sidebar-muted;
+    @apply text-[10px] font-medium uppercase tracking-[0.1em] px-3 py-2 text-sidebar-muted;
   }
 
   .filter-bar {
-    @apply flex flex-wrap gap-2 items-center p-3 bg-card border rounded-md mb-4;
+    @apply flex flex-wrap gap-2 items-center p-3 bg-card border rounded-lg mb-4;
   }
 
   .kpi-delta-positive {
-    @apply text-[hsl(var(--status-on-track))] text-xs font-medium;
+    @apply text-success text-xs font-medium;
   }
 
   .kpi-delta-negative {
-    @apply text-[hsl(var(--status-critical))] text-xs font-medium;
+    @apply text-error text-xs font-medium;
   }
 
   .gantt-bar {
-    @apply h-7 rounded-sm text-xs font-medium flex items-center px-2 truncate text-white;
+    @apply h-7 rounded-md text-xs font-medium flex items-center px-2 truncate text-on-color;
   }
+}
+
+/* Recharts theming — grid, axes and tooltips consume semantic tokens */
+.recharts-cartesian-grid line {
+  stroke: hsl(var(--stroke-muted));
+}
+
+.recharts-cartesian-axis-line,
+.recharts-cartesian-axis-tick-line {
+  stroke: hsl(var(--stroke-default));
+}
+
+.recharts-cartesian-axis-tick-value,
+.recharts-label {
+  fill: hsl(var(--text-tertiary));
+}
+
+.recharts-default-tooltip {
+  background: hsl(var(--surface-raised)) !important;
+  border: 1px solid hsl(var(--stroke-default)) !important;
+  border-radius: 8px;
+  color: hsl(var(--text-primary));
+}
+
+.recharts-tooltip-cursor {
+  fill: hsl(var(--action-tertiary-hover));
+}
+
+.recharts-legend-item-text {
+  color: hsl(var(--text-secondary)) !important;
 }
 
 /* Custom scrollbar for data-dense views */
@@ -144,14 +461,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(var(--muted));
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted-foreground) / 0.3);
+  background: hsl(var(--surface-scroll-bar));
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground) / 0.5);
+  background: hsl(var(--ref-gray-650));
 }

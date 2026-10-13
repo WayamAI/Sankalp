@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { AppIcon } from '@/components/ui/app-icon';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { MetricCard } from '@/components/shared/StatusBadge';
@@ -349,7 +350,7 @@ export default function ScenarioSimulator() {
             <button onClick={() => setPreloadDismissed(true)} className="text-muted-foreground hover:text-foreground"><X className="w-4 h-4" /></button>
           </div>
         )}
-        <h2 className="text-lg font-bold text-foreground mb-4">Scenario Simulator</h2>
+        <h2 className="font-display text-display-xl text-foreground mb-5">Scenario Simulator</h2>
 
         <div className="flex gap-4">
           {/* Setup panel */}
@@ -812,7 +813,7 @@ export default function ScenarioSimulator() {
 
                 {/* Risks */}
                 <div className="metric-card">
-                  <h4 className="text-xs font-semibold text-foreground mb-3">⚠ Residual Risks & Mitigations</h4>
+                  <h4 className="text-xs font-semibold text-foreground mb-3 flex items-center gap-1.5"><AppIcon name="warning" size="sm" className="text-feedback-warning-icon" />Residual Risks & Mitigations</h4>
                   <div className="space-y-2">
                     {plan.risks.map((r, i) => (
                       <div key={i} className="bg-muted/30 rounded-lg p-3">
