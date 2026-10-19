@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Mark } from '@/components/ui/mark';
 import { useNavigate } from 'react-router-dom';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { StatusBadge } from '@/components/shared/StatusBadge';
@@ -85,7 +86,7 @@ export default function CurrentPlan() {
     <AppLayout>
       <div className="p-5">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="font-display text-display-xl text-foreground">Current Production Plan</h2>
+          <div className="flex items-center gap-3"><Mark name="production-plan" size={44} /><h2 className="font-display text-display-xl text-foreground">Current Production Plan</h2></div>
           <div className="flex gap-2">
             {['Both','Pune','Vadodara'].map(f => (
               <button key={f} onClick={() => setFactoryView(f)}

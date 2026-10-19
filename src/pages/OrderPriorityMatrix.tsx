@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Mark } from '@/components/ui/mark';
 import { useNavigate } from 'react-router-dom';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { orders, formatRevenue } from '@/data/mockData';
@@ -34,7 +35,7 @@ export default function OrderPriorityMatrix() {
   return (
     <AppLayout>
       <div className="p-5">
-        <h2 className="font-display text-display-xl text-foreground mb-5">Order Priority Matrix</h2>
+        <div className="flex items-center gap-3 mb-5"><Mark name="priority-matrix" size={44} /><h2 className="font-display text-display-xl text-foreground">Order Priority Matrix</h2></div>
         <div className="filter-bar mb-4">
           <select value={factoryFilter} onChange={e => setFactoryFilter(e.target.value)} className="text-xs px-2 py-1.5 border rounded bg-background text-foreground">
             <option value="All">All Factories</option><option>Pune</option><option>Vadodara</option><option>Unassigned</option>

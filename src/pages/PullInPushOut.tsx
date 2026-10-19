@@ -1,4 +1,5 @@
 import { AppLayout } from '@/components/layout/AppLayout';
+import { Mark } from '@/components/ui/mark';
 import { demandChanges } from '@/data/mockData';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
@@ -23,7 +24,7 @@ export default function PullInPushOut() {
     <AppLayout>
       <div className="p-6 space-y-6">
         <div>
-          <h1 className="font-display text-display-xl text-foreground">Pull-In / Push-Out Impact</h1>
+          <div className="flex items-center gap-3"><Mark name="pull-in-push-out" size={44} /><h1 className="font-display text-display-xl text-foreground">Pull-In / Push-Out Impact</h1></div>
           <p className="text-xs text-muted-foreground mt-0.5">Managing demand volatility across the order book</p>
         </div>
 

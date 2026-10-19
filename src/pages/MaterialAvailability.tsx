@@ -1,4 +1,5 @@
 import { AppLayout } from '@/components/layout/AppLayout';
+import { Mark } from '@/components/ui/mark';
 import { AppIcon } from '@/components/ui/app-icon';
 import { materials, orders, formatRevenue } from '@/data/mockData';
 import { Package, AlertTriangle, CheckCircle } from 'lucide-react';
@@ -35,7 +36,7 @@ export default function MaterialAvailability() {
     <AppLayout>
       <div className="p-6 space-y-6">
         <div>
-          <h1 className="font-display text-display-xl text-foreground">Material Availability</h1>
+          <div className="flex items-center gap-3"><Mark name="material-availability" size={44} /><h1 className="font-display text-display-xl text-foreground">Material Availability</h1></div>
           <p className="text-xs text-muted-foreground mt-0.5">Component readiness across the order book</p>
         </div>
 

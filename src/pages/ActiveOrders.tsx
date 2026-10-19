@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import { Mark } from '@/components/ui/mark';
 import { useNavigate } from 'react-router-dom';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { StatusBadge, PriorityTag, MaterialBar } from '@/components/shared/StatusBadge';
@@ -61,7 +62,7 @@ export default function ActiveOrders() {
     <AppLayout>
       <div className="p-5">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="font-display text-display-xl text-foreground">Active Orders</h2>
+          <div className="flex items-center gap-3"><Mark name="active-orders" size={44} /><h2 className="font-display text-display-xl text-foreground">Active Orders</h2></div>
           <button onClick={() => toast.success('Export initiated')} className="flex items-center gap-1.5 text-xs px-3 py-1.5 border rounded text-muted-foreground hover:text-foreground hover:bg-muted/50">
             <Download className="w-3.5 h-3.5" /> Export
           </button>

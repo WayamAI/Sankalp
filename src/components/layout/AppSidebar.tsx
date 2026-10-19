@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import logoImg from '@/assets/brand/logo-dark.svg';
+import logoDark from '@/assets/brand/logo-dark.svg';
+import logoLight from '@/assets/brand/logo-light.svg';
+import { useTheme } from 'next-themes';
 import { useNavigate, useLocation } from 'react-router-dom';
 import type { IconName } from '@/lib/icons';
 import { AppIcon } from '@/components/ui/app-icon';
@@ -105,6 +107,11 @@ export function AppSidebar() {
   const navigate = useNavigate();
   const location = useLocation();
   const [collapsed, setCollapsed] = useState(prefersCollapsed);
+  const { resolvedTheme, setTheme } = useTheme();
+  const isLight = resolvedTheme === 'light';
+  const toggleTheme = () => setTheme(isLight ? 'dark' : 'light');
+  const themeLabel = isLight ? 'Switch to dark mode' : 'Switch to light mode';
+  const themeIcon = isLight ? 'themeDark' : 'themeLight';
 
   const isActive = (path: string) => {
     if (path === '/') return location.pathname === '/';
@@ -143,7 +150,7 @@ export function AppSidebar() {
   // Brand bar: 56px, mark + wordmark on one line; mark only when collapsed.
   const brand = (
     <div className={`flex h-14 shrink-0 items-center border-b border-sidebar-border ${collapsed ? 'justify-center' : 'gap-2.5 px-4'}`}>
-      <img src={logoImg} alt="Wayam AI" className="w-8 h-8 shrink-0 object-contain" />
+      <img src={isLight ? logoLight : logoDark} alt="Wayam AI" className="w-8 h-8 shrink-0 object-contain" />
       {!collapsed && (
         <h1 className="font-display text-display-lg uppercase tracking-[0.14em] text-foreground whitespace-nowrap">Sankalp</h1>
       )}
@@ -166,7 +173,8 @@ export function AppSidebar() {
             />
           ))}
         </nav>
-        <div className="flex shrink-0 flex-col items-center border-t border-sidebar-border py-3">
+        <div className="flex shrink-0 flex-col items-center gap-1.5 border-t border-sidebar-border py-3">
+          <SidebarItem compact icon={themeIcon} label={themeLabel} onClick={toggleTheme} />
           <SidebarItem compact icon="sidebarExpand" label="Expand sidebar" onClick={() => setCollapsed(false)} />
         </div>
       </div>
@@ -211,6 +219,7 @@ export function AppSidebar() {
 
       {/* Footer: collapse control + user */}
       <div className="flex flex-col gap-3 px-3 py-3 border-t border-sidebar-border">
+        <SidebarItem icon={themeIcon} label={isLight ? 'Dark mode' : 'Light mode'} onClick={toggleTheme} />
         <SidebarItem icon="sidebarCollapse" label="Collapse sidebar" onClick={() => setCollapsed(true)} />
         <div className="flex items-center gap-2.5">
           <div className="w-8 h-8 rounded-full bg-action flex items-center justify-center flex-shrink-0">

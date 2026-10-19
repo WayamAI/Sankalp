@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Mark } from '@/components/ui/mark';
 import { useNavigate } from 'react-router-dom';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { useMarketSignals } from '@/hooks/useMarketSignals';
@@ -368,7 +369,7 @@ export default function ScenarioIntelligence() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <h1 className="font-display text-display-xl text-foreground">Scenario Intelligence</h1>
+            <div className="flex items-center gap-3"><Mark name="scenario-intelligence" size={44} /><h1 className="font-display text-display-xl text-foreground">Scenario Intelligence</h1></div>
             <div className="flex items-center gap-1.5">
               <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[hsl(var(--status-on-track))] opacity-75" />

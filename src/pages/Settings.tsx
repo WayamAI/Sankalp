@@ -1,4 +1,5 @@
 import { AppLayout } from '@/components/layout/AppLayout';
+import { Mark } from '@/components/ui/mark';
 import { useState } from 'react';
 import { toast } from 'sonner';
 import { Settings as SettingsIcon, SlidersHorizontal, Bell } from 'lucide-react';
@@ -44,7 +45,7 @@ export default function SettingsPage() {
     <AppLayout>
       <div className="p-6 space-y-6">
         <div>
-          <h1 className="font-display text-display-xl text-foreground">Settings</h1>
+          <div className="flex items-center gap-3"><Mark name="planning-parameters" size={44} /><h1 className="font-display text-display-xl text-foreground">Settings</h1></div>
           <p className="text-xs text-muted-foreground mt-0.5">Planning parameters, constraints, and alert configuration</p>
         </div>
 

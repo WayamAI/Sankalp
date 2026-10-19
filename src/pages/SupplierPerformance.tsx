@@ -1,4 +1,5 @@
 import { AppLayout } from '@/components/layout/AppLayout';
+import { Mark } from '@/components/ui/mark';
 import { suppliers } from '@/data/mockData';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -25,7 +26,7 @@ export default function SupplierPerformance() {
     <AppLayout>
       <div className="p-6 space-y-6">
         <div>
-          <h1 className="font-display text-display-xl text-foreground">Supplier Performance</h1>
+          <div className="flex items-center gap-3"><Mark name="supplier-performance" size={44} /><h1 className="font-display text-display-xl text-foreground">Supplier Performance</h1></div>
           <p className="text-xs text-muted-foreground mt-0.5">{suppliers.length} active suppliers tracked across both factories</p>
         </div>
 

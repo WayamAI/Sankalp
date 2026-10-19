@@ -13,8 +13,8 @@ import {
   CheckCircle, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, ClipboardList,
   Clock, Database, Download, ExternalLink, Factory, FileBarChart, FileText,
   GitCompareArrows, Grid3X3, Info, LayoutDashboard, Link2, LogOut, Menu,
-  MessageSquare, Package, PanelLeftClose, PanelLeftOpen, Radio, RefreshCw, Search, Send, Settings, Shield,
-  ShieldAlert, SlidersHorizontal, TrendingDown, TrendingUp, Truck, User, Users,
+  MessageSquare, Moon, Package, PanelLeftClose, PanelLeftOpen, Radio, RefreshCw, Search, Send, Settings, Shield,
+  ShieldAlert, SlidersHorizontal, Sun, TrendingDown, TrendingUp, Truck, User, Users,
   Wifi, X, XCircle,
 } from 'lucide-react';
 
@@ -51,6 +51,8 @@ export const icons = {
   menu: Menu,
   sidebarCollapse: PanelLeftClose,
   sidebarExpand: PanelLeftOpen,
+  themeLight: Sun,
+  themeDark: Moon,
   logout: LogOut,
   close: X,
   check: Check,

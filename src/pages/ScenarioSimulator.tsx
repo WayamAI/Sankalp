@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Mark } from '@/components/ui/mark';
 import { AppIcon } from '@/components/ui/app-icon';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AppLayout } from '@/components/layout/AppLayout';
@@ -350,7 +351,7 @@ export default function ScenarioSimulator() {
             <button onClick={() => setPreloadDismissed(true)} className="text-muted-foreground hover:text-foreground"><X className="w-4 h-4" /></button>
           </div>
         )}
-        <h2 className="font-display text-display-xl text-foreground mb-5">Scenario Simulator</h2>
+        <div className="flex items-center gap-3 mb-5"><Mark name="scenario-simulator" size={44} /><h2 className="font-display text-display-xl text-foreground">Scenario Simulator</h2></div>
 
         <div className="flex gap-4">
           {/* Setup panel */}
@@ -601,10 +602,10 @@ export default function ScenarioSimulator() {
 
                 {/* Impact summary */}
                 <div className="grid grid-cols-4 gap-3">
-                  <MetricCard title="Orders Affected" value={String(compoundOrdersAffected)} subtitle={isCompound ? `↑ from 14 (single)` : undefined} />
-                  <MetricCard title="Revenue at Risk" value={`₹${compoundRevenue} Cr`} deltaType="negative" subtitle={isCompound ? `Compound: ${selectedTypes.size} disruptions` : undefined} />
-                  <MetricCard title="Deliveries Impacted" value={`${compoundDeliveries} orders`} subtitle={`avg. ${isCompound ? Math.round(11 * impactMultiplier) : 11} days delayed`} />
-                  <MetricCard title="Utilization Change" value="Pune Bay 3" subtitle={isCompound ? '87% → 54% (W20-24)' : '87% → 62% (W20-22)'} />
+                  <MetricCard mark="order-detail" title="Orders Affected" value={String(compoundOrdersAffected)} subtitle={isCompound ? `↑ from 14 (single)` : undefined} />
+                  <MetricCard mark="geopolitical-risk" title="Revenue at Risk" value={`₹${compoundRevenue} Cr`} deltaType="negative" subtitle={isCompound ? `Compound: ${selectedTypes.size} disruptions` : undefined} />
+                  <MetricCard mark="shipping" title="Deliveries Impacted" value={`${compoundDeliveries} orders`} subtitle={`avg. ${isCompound ? Math.round(11 * impactMultiplier) : 11} days delayed`} />
+                  <MetricCard mark="capacity" title="Utilization Change" value="Pune Bay 3" subtitle={isCompound ? '87% → 54% (W20-24)' : '87% → 62% (W20-22)'} />
                 </div>
 
                 {/* Replanning options */}

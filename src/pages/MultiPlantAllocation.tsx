@@ -1,4 +1,5 @@
 import { AppLayout } from '@/components/layout/AppLayout';
+import { Mark } from '@/components/ui/mark';
 import { toast } from 'sonner';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
 
@@ -21,7 +22,7 @@ export default function MultiPlantAllocation() {
   return (
     <AppLayout>
       <div className="p-5">
-        <h2 className="font-display text-display-xl text-foreground mb-5">Multi-Plant Allocation</h2>
+        <div className="flex items-center gap-3 mb-5"><Mark name="multi-plant-allocation" size={44} /><h2 className="font-display text-display-xl text-foreground">Multi-Plant Allocation</h2></div>
 
         <div className="metric-card mb-4">
           <h3 className="text-xs font-semibold text-foreground mb-3">Allocation Recommendations</h3>

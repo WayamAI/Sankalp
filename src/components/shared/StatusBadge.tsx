@@ -1,3 +1,4 @@
+import { Mark } from '@/components/ui/mark';
 import { type OrderStatus, type Priority } from '@/data/mockData';
 
 interface StatusBadgeProps {
@@ -77,14 +78,16 @@ interface MetricCardProps {
   delta?: string;
   deltaType?: 'positive' | 'negative' | 'neutral';
   icon?: React.ReactNode;
+  /** Illustrated mark name (src/assets/marks); takes precedence over `icon`. */
+  mark?: string;
 }
 
-export function MetricCard({ title, value, subtitle, delta, deltaType = 'neutral', icon }: MetricCardProps) {
+export function MetricCard({ title, value, subtitle, delta, deltaType = 'neutral', icon, mark }: MetricCardProps) {
   return (
     <div className="metric-card">
       <div className="flex items-start justify-between">
         <p className="text-[11px] font-medium text-muted-foreground uppercase tracking-wider">{title}</p>
-        {icon && <div className="text-icon-tertiary">{icon}</div>}
+        {mark ? <Mark name={mark} size={36} className="-mt-1" /> : icon && <div className="text-icon-tertiary">{icon}</div>}
       </div>
       <p className="font-display text-display-metric tabular-nums mt-2 text-foreground">{value}</p>
       <div className="flex items-center gap-2 mt-1.5">

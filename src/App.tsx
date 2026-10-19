@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { ThemeProvider } from "next-themes";
 import CommandCenter from "./pages/CommandCenter";
 import ActiveOrders from "./pages/ActiveOrders";
 import OrderDetail from "./pages/OrderDetail";
@@ -28,6 +29,7 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
     <TooltipProvider>
       <Toaster />
       <Sonner />
@@ -42,8 +44,7 @@ const App = () => (
           <Route path="/scenario-intelligence" element={<ScenarioIntelligence />} />
           <Route path="/simulate" element={<ScenarioSimulator />} />
           <Route path="/plan-comparison" element={<PlanComparison />} />
-          <Route path="/factory/pune" element={<FactoryView />} />
-          <Route path="/factory/vadodara" element={<FactoryView />} />
+          <Route path="/factory/:factoryId" element={<FactoryView />} />
           <Route path="/allocation" element={<MultiPlantAllocation />} />
           <Route path="/materials" element={<MaterialAvailability />} />
           <Route path="/suppliers" element={<SupplierPerformance />} />
@@ -57,6 +58,7 @@ const App = () => (
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 

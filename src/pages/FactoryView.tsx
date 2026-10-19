@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from 'react-router-dom';
+import { Mark } from '@/components/ui/mark';
 import { AppIcon } from '@/components/ui/app-icon';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { MetricCard, StatusBadge } from '@/components/shared/StatusBadge';
@@ -34,14 +35,14 @@ export default function FactoryView() {
   return (
     <AppLayout>
       <div className="p-5">
-        <h2 className="font-display text-display-xl text-foreground mb-5">{factory.name}</h2>
+        <div className="flex items-center gap-3 mb-5"><Mark name={`factory-${key}`} size={44} /><h2 className="font-display text-display-xl text-foreground">{factory.name}</h2></div>
 
         <div className="grid grid-cols-5 gap-3 mb-4">
-          <MetricCard title="Planned Output" value={`${factory.planned} units`} subtitle="This week" />
-          <MetricCard title="Actual Output" value={`${factory.actual} units`} delta={factory.actual < factory.planned ? `${factory.actual - factory.planned}` : 'On target'} deltaType={factory.actual < factory.planned ? 'negative' : 'positive'} />
-          <MetricCard title="Utilization" value={`${factory.utilization}%`} />
-          <MetricCard title="Active Orders" value={factory.activeOrders} />
-          <MetricCard title="Workforce" value={factory.workforce} subtitle="On shift" />
+          <MetricCard mark="production-plan" title="Planned Output" value={`${factory.planned} units`} subtitle="This week" />
+          <MetricCard mark="output-units" title="Actual Output" value={`${factory.actual} units`} delta={factory.actual < factory.planned ? `${factory.actual - factory.planned}` : 'On target'} deltaType={factory.actual < factory.planned ? 'negative' : 'positive'} />
+          <MetricCard mark="utilization" title="Utilization" value={`${factory.utilization}%`} />
+          <MetricCard mark="active-orders" title="Active Orders" value={factory.activeOrders} />
+          <MetricCard mark="workforce" title="Workforce" value={factory.workforce} subtitle="On shift" />
         </div>
 
         <p className="text-xs text-status-at-risk mb-4"><AppIcon name="warning" size="xs" className="inline-block align-[-2px] mr-1 text-feedback-warning-icon" />Top Bottleneck: {factory.bottleneck}</p>

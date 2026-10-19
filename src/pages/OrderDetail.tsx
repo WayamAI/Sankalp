@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from 'react-router-dom';
+import { Mark } from '@/components/ui/mark';
 import { AppIcon } from '@/components/ui/app-icon';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { StatusBadge, PriorityTag, MaterialBar } from '@/components/shared/StatusBadge';
@@ -41,7 +42,7 @@ export default function OrderDetail() {
           </button>
           <div className="flex-1">
             <div className="flex items-center gap-3">
-              <h2 className="font-display text-display-xl text-foreground">{order.id}</h2>
+              <div className="flex items-center gap-3"><Mark name="order-detail" size={44} /><h2 className="font-display text-display-xl text-foreground">{order.id}</h2></div>
               <PriorityTag priority={order.priority} />
               <StatusBadge status={order.status} size="md" />
               <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded">{order.factory}</span>

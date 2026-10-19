@@ -335,6 +335,103 @@
 
     color-scheme: dark;
   }
+
+  /* ------------------------------------------------------------------
+     TIER 2 — SEMANTIC TOKENS (light mode overrides)
+  ------------------------------------------------------------------ */
+  :root.light {
+    --text-primary: var(--ref-gray-950);
+    --text-secondary: var(--ref-gray-700);
+    --text-tertiary: var(--ref-gray-550);
+    --text-quaternary: var(--ref-gray-400);
+    --text-on-color: var(--ref-white);
+
+    --icon-primary: var(--ref-gray-950);
+    --icon-secondary: var(--ref-gray-700);
+    --icon-tertiary: var(--ref-gray-550);
+    --icon-quaternary: var(--ref-gray-400);
+    --icon-on-color: var(--ref-white);
+
+    --stroke-default: var(--ref-black) / 0.14;
+    --stroke-active: var(--ref-black) / 0.24;
+    --stroke-muted: var(--ref-black) / 0.08;
+    --stroke-disabled: var(--ref-black) / 0.04;
+    --stroke-on-color: var(--ref-white) / 0.24;
+
+    --surface-page-background: var(--ref-gray-100);
+    --surface-container: var(--ref-white);
+    --surface-raised: var(--ref-gray-50);
+    --surface-raised-x2: var(--ref-gray-200);
+    --surface-action: var(--ref-gray-50);
+    --surface-scroll-bar: var(--ref-gray-300);
+
+    --action-primary-default: var(--ref-gray-950);
+    --action-primary-hover: var(--ref-gray-800);
+    --action-primary-focused: var(--ref-black);
+    --action-primary-disabled: var(--ref-gray-300);
+    --action-primary-content: var(--ref-white);
+
+    --action-secondary-default: var(--ref-gray-100);
+    --action-secondary-hover: var(--ref-gray-200);
+    --action-secondary-focused: var(--ref-gray-300);
+    --action-secondary-disabled: var(--ref-gray-50);
+
+    --action-tertiary-hover: var(--ref-black) / 0.05;
+    --action-tertiary-focused: var(--ref-black) / 0.08;
+
+    --feedback-success-content: var(--ref-green-700);
+    --feedback-success-icon: var(--ref-green-600);
+    --feedback-success-stroke: var(--ref-green-300);
+    --feedback-success-background: var(--ref-green-500) / 0.10;
+
+    --feedback-info-content: var(--ref-blue-700);
+    --feedback-info-icon: var(--ref-blue-600);
+    --feedback-info-stroke: var(--ref-blue-300);
+    --feedback-info-background: var(--ref-blue-500) / 0.10;
+
+    --feedback-neutral-content: var(--ref-gray-700);
+    --feedback-neutral-icon: var(--ref-gray-600);
+    --feedback-neutral-stroke: var(--ref-gray-300);
+    --feedback-neutral-background: var(--ref-black) / 0.05;
+
+    --feedback-warning-content: var(--ref-orange-700);
+    --feedback-warning-icon: var(--ref-orange-600);
+    --feedback-warning-stroke: var(--ref-orange-300);
+    --feedback-warning-background: var(--ref-orange-500) / 0.10;
+
+    --feedback-error-content: var(--ref-red-700);
+    --feedback-error-icon: var(--ref-red-600);
+    --feedback-error-stroke: var(--ref-red-300);
+    --feedback-error-background: var(--ref-red-500) / 0.10;
+
+    --status-on-track: var(--ref-green-600);
+    --status-at-risk: var(--ref-orange-600);
+    --status-critical: var(--ref-red-600);
+    --status-delayed: var(--ref-red-800);
+    --status-completed: var(--ref-gray-500);
+
+    --priority-p1: var(--ref-red-600);
+    --priority-p2: var(--ref-orange-600);
+    --priority-p3: var(--ref-yellow-600);
+    --priority-p4: var(--ref-gray-500);
+
+    --chart-committed: var(--ref-gray-800);
+    --chart-tentative: var(--ref-gray-500);
+    --chart-available: var(--ref-gray-200);
+    --chart-threshold: var(--ref-red-600);
+    --chart-series-1: var(--ref-gray-800);
+    --chart-series-2: var(--ref-gray-400);
+    --chart-series-3: var(--ref-blue-500);
+    --chart-series-4: var(--ref-blue-800);
+    --chart-series-5: var(--ref-teal-500);
+    --chart-series-6: var(--ref-purple-400);
+
+    --destructive: var(--ref-red-600);
+    --ring: var(--ref-gray-500);
+    --sidebar-ring: var(--ref-gray-500);
+
+    color-scheme: light;
+  }
 }
 
 @layer base {

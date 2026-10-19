@@ -1,4 +1,5 @@
 import { AppLayout } from '@/components/layout/AppLayout';
+import { Mark } from '@/components/ui/mark';
 import { AppIcon } from '@/components/ui/app-icon';
 import { AreaChart, Area, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend, ReferenceLine } from 'recharts';
 
@@ -31,7 +32,7 @@ export default function DemandForecast() {
     <AppLayout>
       <div className="p-6 space-y-6">
         <div>
-          <h1 className="font-display text-display-xl text-foreground">Demand Forecast</h1>
+          <div className="flex items-center gap-3"><Mark name="demand-forecast" size={44} /><h1 className="font-display text-display-xl text-foreground">Demand Forecast</h1></div>
           <p className="text-xs text-muted-foreground mt-0.5">12-month order intake forecast with capacity overlay</p>
         </div>
 

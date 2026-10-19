@@ -45,12 +45,14 @@ export default function CommandCenter() {
         <div className="grid grid-cols-5 gap-3">
           <MetricCard
             title="Active Orders"
+            mark="active-orders"
             value="1,183"
             subtitle="28 added this week"
             icon={<ClipboardList className="w-4 h-4" />}
           />
           <MetricCard
             title="On-Time Delivery"
+            mark="on-time-delivery"
             value="86.7%"
             delta="↓ 1.8% vs. last week"
             deltaType="negative"
@@ -58,18 +60,21 @@ export default function CommandCenter() {
           />
           <MetricCard
             title="Pune Utilization"
+            mark="factory-pune"
             value="87%"
             subtitle="4 bays active"
             icon={<FactoryIcon className="w-4 h-4" />}
           />
           <MetricCard
             title="Vadodara Utilization"
+            mark="factory-vadodara"
             value="68%"
             subtitle="3 bays active"
             icon={<FactoryIcon className="w-4 h-4" />}
           />
           <MetricCard
             title="Revenue at Risk"
+            mark="geopolitical-risk"
             value="₹142 Cr"
             subtitle="4 critical shortages"
             delta="↑"

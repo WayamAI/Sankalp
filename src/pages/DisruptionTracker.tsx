@@ -1,4 +1,5 @@
 import { AppLayout } from '@/components/layout/AppLayout';
+import { Mark } from '@/components/ui/mark';
 import { disruptions } from '@/data/mockData';
 import { useNavigate } from 'react-router-dom';
 import { AlertTriangle, Clock, User, ExternalLink } from 'lucide-react';
@@ -34,7 +35,7 @@ export default function DisruptionTracker() {
     <AppLayout>
       <div className="p-6 space-y-6">
         <div>
-          <h1 className="font-display text-display-xl text-foreground">Disruption Tracker</h1>
+          <div className="flex items-center gap-3"><Mark name="disruption-tracker" size={44} /><h1 className="font-display text-display-xl text-foreground">Disruption Tracker</h1></div>
           <p className="text-xs text-muted-foreground mt-0.5">Active supply chain disruptions being managed</p>
         </div>
 

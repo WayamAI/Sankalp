@@ -1,4 +1,5 @@
 import { AppLayout } from '@/components/layout/AppLayout';
+import { Mark } from '@/components/ui/mark';
 
 const metrics = [
   { label: 'On-Time Delivery %', current: '86.7%', optA: '84.2%', optADelta: '↓ 2.5%', optB: '83.9%', optBDelta: '↓ 2.8%' },
@@ -23,7 +24,7 @@ export default function PlanComparison() {
   return (
     <AppLayout>
       <div className="p-5">
-        <h2 className="font-display text-display-xl text-foreground mb-5">Plan Comparison</h2>
+        <div className="flex items-center gap-3 mb-5"><Mark name="plan-comparison" size={44} /><h2 className="font-display text-display-xl text-foreground">Plan Comparison</h2></div>
 
         <div className="metric-card mb-4">
           <h3 className="text-xs font-semibold text-foreground mb-3">Side-by-Side KPI Comparison</h3>

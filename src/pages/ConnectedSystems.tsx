@@ -1,4 +1,5 @@
 import { AppLayout } from '@/components/layout/AppLayout';
+import { Mark } from '@/components/ui/mark';
 import { integrations } from '@/data/mockData';
 import { CheckCircle, AlertTriangle, XCircle, RefreshCw, Database, Wifi } from 'lucide-react';
 
@@ -19,7 +20,7 @@ export default function ConnectedSystems() {
     <AppLayout>
       <div className="p-6 space-y-6">
         <div>
-          <h1 className="font-display text-display-xl text-foreground">Connected Systems</h1>
+          <div className="flex items-center gap-3"><Mark name="connected-systems" size={44} /><h1 className="font-display text-display-xl text-foreground">Connected Systems</h1></div>
           <p className="text-xs text-muted-foreground mt-0.5">Integration health and data sync status</p>
         </div>
 
